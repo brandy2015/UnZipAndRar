@@ -24,7 +24,16 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
-  s.dependency 'FileKit','SHPathManager','Zip','UnrarKit','SSZipArchive','SHTManager'
+
+  s.dependency 'FileKit'
+  s.dependency 'SHPathManager'
+
+  s.dependency 'Zip'
+  s.dependency 'UnrarKit'
+  s.dependency 'SSZipArchive'
+  s.dependency 'SHTManager'
+
+
 
   s.ios.deployment_target = '9.0'
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
