@@ -16,8 +16,8 @@
 		D62AFC2721772A8C0013974F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2421772A8B0013974F /* LICENSE */; };
 		D62AFC2821772A8C0013974F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2521772A8C0013974F /* README.md */; };
 		D62AFC2921772A8C0013974F /* UnZipAndRar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */; };
-		D62AFC2B21772AFD0013974F /* univeralZipRarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */; };
 		D62AFC2D21772FA30013974F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2C21772FA30013974F /* Podfile */; };
+		D63F7B4A21776232004A9DA3 /* univeralZipRarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,8 @@
 		D62AFC2421772A8B0013974F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D62AFC2521772A8C0013974F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnZipAndRar.podspec; sourceTree = "<group>"; };
-		D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = univeralZipRarObject.swift; sourceTree = "<group>"; };
 		D62AFC2C21772FA30013974F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = univeralZipRarObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 		D62AFC1121772A1A0013974F /* UnZipAndRar */ = {
 			isa = PBXGroup;
 			children = (
-				D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */,
+				D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */,
 				D62AFC1221772A1A0013974F /* xxxUnZipAndRarzz.swift */,
 				D62AFC1421772A1A0013974F /* xxxxUnZipAndRarxx.swift */,
 				D62AFC1621772A1A0013974F /* Main.storyboard */,
@@ -241,7 +241,7 @@
 			files = (
 				D62AFC1521772A1A0013974F /* xxxxUnZipAndRarxx.swift in Sources */,
 				D62AFC1321772A1A0013974F /* xxxUnZipAndRarzz.swift in Sources */,
-				D62AFC2B21772AFD0013974F /* univeralZipRarObject.swift in Sources */,
+				D63F7B4A21776232004A9DA3 /* univeralZipRarObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

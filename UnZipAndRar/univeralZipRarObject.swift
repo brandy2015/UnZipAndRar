@@ -14,41 +14,46 @@ import SSZipArchive
 import UnrarKit
 import SHTManager
 
-var CurrentZipRar = universalZipRarObject()
+//public var CurrentZipRar = universalZipRarObject()
 
-class universalZipRarObject: NSObject {
-
+public class universalZipRarObject: NSObject {
+    public var VC = UIViewController()
+    public var TVC = UIViewController()
     
     var 解压次数 = 0 //用于修改弹出密码框的主题 是否显示重新输入
     
-    func UnzipOrRAR(filePathX:Path,VC:UIViewController)  {
+    public func UnzipOrRAR(filePathX:Path,VC:UIViewController) -> Path {
+        
+        var 返回路径 = Path()
         self.VC = VC
         
         if let ziporRAR = isZiporRAR(From: filePathX){
             if ziporRAR{
                 //zip
-                Zip高级解压缩(From: filePathX)
+                返回路径 = Zip高级解压缩(From: filePathX)
             }else{
                 //Rar
                 let archive = try? URKArchive(path: filePathX.url.path)
                 if (archive?.isPasswordProtected()) ?? false{
                     print("需要密码")
-                //  弹出输入密码框
+                    //  弹出输入密码框
                     
-                    decompressRAR(From: filePathX, Password: "")
+                    返回路径 = decompressRAR(From: filePathX, Password: "")
                 }else{
                     print("不需要密码")
-                    decompressRAR(From: filePathX)
+                    返回路径 = decompressRAR(From: filePathX)
                 }
             }
         }else{print("因为不是zip和rar所以无法解压缩")}
+        
+        return 返回路径
     }
     
     
     
     
     //如果是zip 那么返回true,如果是RAR，返回false
-    func isZiporRAR(From:Path) -> Bool? {
+    public func isZiporRAR(From:Path) -> Bool? {
         
         if From.pathExtension == "zip" || From.pathExtension == "Zip" || From.pathExtension == "ZIP"{
             return true
@@ -62,7 +67,8 @@ class universalZipRarObject: NSObject {
     
     
     //解压缩RAR
-    func decompressRAR(From:Path,To:Path = userDocument + "ZipOrRar",Password:String? = nil)  {
+    public func decompressRAR(From:Path,To:Path = userDocument + "ZipOrRar",Password:String? = nil) -> Path {
+        let To = To + (From.fileNameWithoutEx + SHTManager.NowString)
         
         
         let archive = try? URKArchive(path: From.url.path)
@@ -70,68 +76,58 @@ class universalZipRarObject: NSObject {
             archive?.password = Password
         }
         
-        
-        var 解压缩到路径 = To + removeExtension(路径: From.fileName)
-        print(解压缩到路径)
-        if !To.exists{try? To.createDirectory()}
-        
-        
-        print(解压缩到路径)
-        if 解压缩到路径.exists{
-            
-            
-            
-            let m = (removeExtension(路径: From.fileName) + "\(Date.ToInt(date: SHTManager.Now))")
-            解压缩到路径 = To + m
-            if !解压缩到路径.exists{
-                
-                do {try 解压缩到路径.createDirectory()}catch{
-                    print(error)
-                }
-            }
-        }
-        
         do {
-            try archive?.extractFiles(to: 解压缩到路径.url.path, overwrite: true, progress: nil)
+            try archive?.extractFiles(to: To.url.path, overwrite: true, progress: nil)
             
             解压次数 = 0 //置空
         }catch{
-            try? 解压缩到路径.deleteFile()
+            try? To.deleteFile()
             print("解压缩失败")
             print(error)
             //弹出选择框，是填入密码，或者取消解压缩
             
             J解压缩密码ZipRAR(From: From)
-           
+            
             解压次数 += 1
         }
         
+        let textFiles = To.find(searchDepth: 3) { path in
+            path.url.path.contains("__MACOSX")
+            
+        }
+        
+        print("这里这里\n\n\n")
+        print(textFiles)
+        
+        for i in textFiles{
+            try? i.deleteFile()
+        }
+        
+        
+        return To
     }
     
     
     /////////////////////////////////处理zip
-
+    
     
     //    Advanced Zip
-    func Zip高级解压缩(From:Path,To:Path = userDocument + "ZipOrRar",密码 :String = "password")  {
+    public func Zip高级解压缩(From:Path,To:Path = userDocument + "ZipOrRar",密码 :String = "password")  -> Path  {
+        print("查看一下")
+        print(From.fileNameWithoutEx)
+        
+        
+        let To = To + (From.fileNameWithoutEx + SHTManager.NowString)
+        
+        print("文件后缀去掉")
+        print(To)
+        
+        
         if !To.exists{try? To.createDirectory()}
-        var 解压缩到路径 = To + removeExtension(路径: From.fileName)
-        print(解压缩到路径)
-        if !To.exists{try? To.createDirectory()}
-        print(解压缩到路径)
-        if 解压缩到路径.exists{
-            let m = (removeExtension(路径: From.fileName) + "\(Date.ToInt(date: SHTManager.Now))")
-            解压缩到路径 = To + m
-            if !解压缩到路径.exists{
-                do {try 解压缩到路径.createDirectory()}catch{
-                    print(error)
-                }
-            }
-        }
         
         do{
             // Unzip
-            try Zip.unzipFile(From.url, destination: 解压缩到路径.url, overwrite: false, password: 密码, progress: { (progress) -> () in
+            try Zip.unzipFile(From.url, destination: To.url, overwrite: false, password: 密码, progress: { (progress) -> () in
                 print("解压缩进度",progress)
                 self.解压次数 = 0
                 
@@ -140,7 +136,7 @@ class universalZipRarObject: NSObject {
             
         }catch{
             
-            try? 解压缩到路径.deleteFile()
+            try? To.deleteFile()
             
             
             J解压缩密码ZipRAR(From: From)
@@ -150,11 +146,25 @@ class universalZipRarObject: NSObject {
             解压次数 += 1
         }
         
+        
+        let textFiles = To.find(searchDepth: 3) { path in
+            path.url.path.contains("__MACOSX")
+            
+        }
+        
+        print("这里这里\n\n\n")
+        print(textFiles)
+        
+        for i in textFiles{
+            try? i.deleteFile()
+        }
+        
+        return To
     }
-    var VC = UIViewController()
+    
     //解锁口令窗口
-    func J解压缩密码ZipRAR(From:Path){//,VC:UIViewController)  {
-       
+    public func J解压缩密码ZipRAR(From:Path){//,VC:UIViewController)  {
+        
         //添加解锁口令界面
         let alert = UIAlertController(title: "输入解压缩密码", message: "在下面输入密码", preferredStyle: .alert)
         
@@ -172,9 +182,9 @@ class universalZipRarObject: NSObject {
                 if let ziporRAR = self.isZiporRAR(From: From){
                     if ziporRAR{
                         //zip
-                       self.Zip高级解压缩(From: From, 密码: x)
+                        _ = self.Zip高级解压缩(From: From, 密码: x)
                     }else{
-                        self.decompressRAR(From: From,Password: x)
+                        _ = self.decompressRAR(From: From,Password: x)
                     }
                 }else{print("因为不是zip和rar所以无法解压缩")}
                 
@@ -182,22 +192,20 @@ class universalZipRarObject: NSObject {
                 
                 print(x)
             }else{
-               print("无密码")
+                print("无密码")
             }
         })
         
         jiesuoAction.isEnabled = false
         alert.addTextField { (textField2:UITextField) -> Void in
             textField2.placeholder = "Password？"
-        
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField2, queue: OperationQueue.main) { (notification) in
+            
+            
+           
+            
+            NotificationCenter.default.addObserver(forName:  UITextField.textDidChangeNotification, object: textField2, queue: OperationQueue.main) { (notification) in
                 jiesuoAction.isEnabled  = textField2.text != ""
             }
-            
-            
-            //            NotificationCeUITextField.textDidChangeNotification(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField2, queue: OperationQueue.main) { (notification) in
-//                jiesuoAction.isEnabled  = textField2.text != ""
-//            }
         }
         alert.addAction(cancelAction)
         alert.addAction(jiesuoAction)
@@ -205,32 +213,32 @@ class universalZipRarObject: NSObject {
     }
     
     
-//    //压缩成的文件有问题！！！！
-//    func 高级压缩(From:[Path],To:Path) {
-//
-//        let zipFilePath = To.url                 //"archive.zip"需要写清楚文件名还有后缀
-//
-//        if let 路径 =  PathArray转URLArray(转: From){
-//            do{
-//
-//                try Zip.zipFiles(paths: 路径, zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
-//                    print(progress)
-//                }) //Zip
-//
-//
-//            }catch{
-//                print(error)
-//            }
-//
-//        }else{
-//            print("没有文件")
-//        }
-//    }
+    //    //压缩成的文件有问题！！！！
+    //    func 高级压缩(From:[Path],To:Path) {
+    //
+    //        let zipFilePath = To.url                 //"archive.zip"需要写清楚文件名还有后缀
+    //
+    //        if let 路径 =  PathArray转URLArray(转: From){
+    //            do{
+    //
+    //                try Zip.zipFiles(paths: 路径, zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
+    //                    print(progress)
+    //                }) //Zip
+    //
+    //
+    //            }catch{
+    //                print(error)
+    //            }
+    //
+    //        }else{
+    //            print("没有文件")
+    //        }
+    //    }
     
 }
 
 
-func PathArray转URLArray(转:[Path]) -> [URL]? {
+public func PathArray转URLArray(转:[Path]) -> [URL]? {
     var 返回数组 :[URL]? = nil
     
     for i in 转{
@@ -239,17 +247,3 @@ func PathArray转URLArray(转:[Path]) -> [URL]? {
     
     return 返回数组
 }
-
-
-func removeExtension(路径:String) -> String {
-    var 返回路径 = 路径
-    if 返回路径.contains("."){
-        for _ in 0...3{
-            返回路径.removeLast()
-        }
-    }
-    
-    return 返回路径
-}
-
-
