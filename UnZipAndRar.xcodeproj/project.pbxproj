@@ -7,79 +7,114 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D655AE9B213988CD00EDD513 /* univeralZipRarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655AE9A213988CD00EDD513 /* univeralZipRarObject.swift */; };
-		D655AE9E213988E600EDD513 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D655AE9C213988E600EDD513 /* LICENSE */; };
-		D655AE9F213988E600EDD513 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D655AE9D213988E600EDD513 /* README.md */; };
-		D655AEA1213988EB00EDD513 /* UnZipAndRar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D655AEA0213988EB00EDD513 /* UnZipAndRar.podspec */; };
-		D68BC441213988310031CF16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BC440213988310031CF16 /* AppDelegate.swift */; };
-		D68BC448213988330031CF16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D68BC447213988330031CF16 /* Assets.xcassets */; };
-		D68BC44B213988330031CF16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68BC449213988330031CF16 /* LaunchScreen.storyboard */; };
+		838831332867EDEE6B6F8EBE /* Pods_UnZipAndRar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA971172AC1F916F89CDA82 /* Pods_UnZipAndRar.framework */; };
+		D62AFC1321772A1A0013974F /* xxxUnZipAndRarzz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62AFC1221772A1A0013974F /* xxxUnZipAndRarzz.swift */; };
+		D62AFC1521772A1A0013974F /* xxxxUnZipAndRarxx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62AFC1421772A1A0013974F /* xxxxUnZipAndRarxx.swift */; };
+		D62AFC1821772A1A0013974F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC1621772A1A0013974F /* Main.storyboard */; };
+		D62AFC1A21772A1B0013974F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC1921772A1B0013974F /* Assets.xcassets */; };
+		D62AFC1D21772A1B0013974F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC1B21772A1B0013974F /* LaunchScreen.storyboard */; };
+		D62AFC2721772A8C0013974F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2421772A8B0013974F /* LICENSE */; };
+		D62AFC2821772A8C0013974F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2521772A8C0013974F /* README.md */; };
+		D62AFC2921772A8C0013974F /* UnZipAndRar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */; };
+		D62AFC2B21772AFD0013974F /* univeralZipRarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */; };
+		D62AFC2D21772FA30013974F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2C21772FA30013974F /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D655AE9A213988CD00EDD513 /* univeralZipRarObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = univeralZipRarObject.swift; sourceTree = "<group>"; };
-		D655AE9C213988E600EDD513 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D655AE9D213988E600EDD513 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D655AEA0213988EB00EDD513 /* UnZipAndRar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnZipAndRar.podspec; sourceTree = "<group>"; };
-		D68BC43D213988310031CF16 /* UnZipAndRar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnZipAndRar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D68BC440213988310031CF16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D68BC447213988330031CF16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D68BC44A213988330031CF16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D68BC44C213988330031CF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CA971172AC1F916F89CDA82 /* Pods_UnZipAndRar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnZipAndRar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3382E4DEA8714B94F955D04C /* Pods-UnZipAndRar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnZipAndRar.release.xcconfig"; path = "Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar.release.xcconfig"; sourceTree = "<group>"; };
+		95D1A1271F5AF8F28AF15433 /* Pods-UnZipAndRar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnZipAndRar.debug.xcconfig"; path = "Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar.debug.xcconfig"; sourceTree = "<group>"; };
+		D62AFC0F21772A1A0013974F /* UnZipAndRar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnZipAndRar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62AFC1221772A1A0013974F /* xxxUnZipAndRarzz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxxUnZipAndRarzz.swift; sourceTree = "<group>"; };
+		D62AFC1421772A1A0013974F /* xxxxUnZipAndRarxx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxxxUnZipAndRarxx.swift; sourceTree = "<group>"; };
+		D62AFC1721772A1A0013974F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D62AFC1921772A1B0013974F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D62AFC1C21772A1B0013974F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D62AFC1E21772A1B0013974F /* UnZipAndRar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnZipAndRar-Info.plist"; sourceTree = "<group>"; };
+		D62AFC2421772A8B0013974F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D62AFC2521772A8C0013974F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnZipAndRar.podspec; sourceTree = "<group>"; };
+		D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = univeralZipRarObject.swift; sourceTree = "<group>"; };
+		D62AFC2C21772FA30013974F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D68BC43A213988310031CF16 /* Frameworks */ = {
+		D62AFC0C21772A1A0013974F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838831332867EDEE6B6F8EBE /* Pods_UnZipAndRar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D68BC434213988310031CF16 = {
+		43AB554E5A0973716D29547F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D655AE9C213988E600EDD513 /* LICENSE */,
-				D655AEA0213988EB00EDD513 /* UnZipAndRar.podspec */,
-				D655AE9D213988E600EDD513 /* README.md */,
-				D68BC43F213988310031CF16 /* UnZipAndRar */,
-				D68BC43E213988310031CF16 /* Products */,
+				95D1A1271F5AF8F28AF15433 /* Pods-UnZipAndRar.debug.xcconfig */,
+				3382E4DEA8714B94F955D04C /* Pods-UnZipAndRar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D62AFC0621772A1A0013974F = {
+			isa = PBXGroup;
+			children = (
+				D62AFC2421772A8B0013974F /* LICENSE */,
+				D62AFC2521772A8C0013974F /* README.md */,
+				D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */,
+				D62AFC2C21772FA30013974F /* Podfile */,
+				D62AFC1121772A1A0013974F /* UnZipAndRar */,
+				D62AFC1021772A1A0013974F /* Products */,
+				43AB554E5A0973716D29547F /* Pods */,
+				FAFDF0EE1619B9C9DC896C60 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		D68BC43E213988310031CF16 /* Products */ = {
+		D62AFC1021772A1A0013974F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D68BC43D213988310031CF16 /* UnZipAndRar.app */,
+				D62AFC0F21772A1A0013974F /* UnZipAndRar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D68BC43F213988310031CF16 /* UnZipAndRar */ = {
+		D62AFC1121772A1A0013974F /* UnZipAndRar */ = {
 			isa = PBXGroup;
 			children = (
-				D68BC440213988310031CF16 /* AppDelegate.swift */,
-				D655AE9A213988CD00EDD513 /* univeralZipRarObject.swift */,
-				D68BC447213988330031CF16 /* Assets.xcassets */,
-				D68BC449213988330031CF16 /* LaunchScreen.storyboard */,
-				D68BC44C213988330031CF16 /* Info.plist */,
+				D62AFC2A21772AFC0013974F /* univeralZipRarObject.swift */,
+				D62AFC1221772A1A0013974F /* xxxUnZipAndRarzz.swift */,
+				D62AFC1421772A1A0013974F /* xxxxUnZipAndRarxx.swift */,
+				D62AFC1621772A1A0013974F /* Main.storyboard */,
+				D62AFC1921772A1B0013974F /* Assets.xcassets */,
+				D62AFC1B21772A1B0013974F /* LaunchScreen.storyboard */,
+				D62AFC1E21772A1B0013974F /* UnZipAndRar-Info.plist */,
 			);
 			path = UnZipAndRar;
+			sourceTree = "<group>";
+		};
+		FAFDF0EE1619B9C9DC896C60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CA971172AC1F916F89CDA82 /* Pods_UnZipAndRar.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D68BC43C213988310031CF16 /* UnZipAndRar */ = {
+		D62AFC0E21772A1A0013974F /* UnZipAndRar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D68BC44F213988330031CF16 /* Build configuration list for PBXNativeTarget "UnZipAndRar" */;
+			buildConfigurationList = D62AFC2121772A1B0013974F /* Build configuration list for PBXNativeTarget "UnZipAndRar" */;
 			buildPhases = (
-				D68BC439213988310031CF16 /* Sources */,
-				D68BC43A213988310031CF16 /* Frameworks */,
-				D68BC43B213988310031CF16 /* Resources */,
+				E90EEA897C1839C04E9E2513 /* [CP] Check Pods Manifest.lock */,
+				D62AFC0B21772A1A0013974F /* Sources */,
+				D62AFC0C21772A1A0013974F /* Frameworks */,
+				D62AFC0D21772A1A0013974F /* Resources */,
+				C5987B74BB903B376B89866B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -87,25 +122,25 @@
 			);
 			name = UnZipAndRar;
 			productName = UnZipAndRar;
-			productReference = D68BC43D213988310031CF16 /* UnZipAndRar.app */;
+			productReference = D62AFC0F21772A1A0013974F /* UnZipAndRar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D68BC435213988310031CF16 /* Project object */ = {
+		D62AFC0721772A1A0013974F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = zhangqian;
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "张子豪";
 				TargetAttributes = {
-					D68BC43C213988310031CF16 = {
-						CreatedOnToolsVersion = 9.4.1;
+					D62AFC0E21772A1A0013974F = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = D68BC438213988310031CF16 /* Build configuration list for PBXProject "UnZipAndRar" */;
+			buildConfigurationList = D62AFC0A21772A1A0013974F /* Build configuration list for PBXProject "UnZipAndRar" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,48 +148,118 @@
 				en,
 				Base,
 			);
-			mainGroup = D68BC434213988310031CF16;
-			productRefGroup = D68BC43E213988310031CF16 /* Products */;
+			mainGroup = D62AFC0621772A1A0013974F;
+			productRefGroup = D62AFC1021772A1A0013974F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D68BC43C213988310031CF16 /* UnZipAndRar */,
+				D62AFC0E21772A1A0013974F /* UnZipAndRar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D68BC43B213988310031CF16 /* Resources */ = {
+		D62AFC0D21772A1A0013974F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D655AE9E213988E600EDD513 /* LICENSE in Resources */,
-				D655AEA1213988EB00EDD513 /* UnZipAndRar.podspec in Resources */,
-				D68BC44B213988330031CF16 /* LaunchScreen.storyboard in Resources */,
-				D655AE9F213988E600EDD513 /* README.md in Resources */,
-				D68BC448213988330031CF16 /* Assets.xcassets in Resources */,
+				D62AFC1D21772A1B0013974F /* LaunchScreen.storyboard in Resources */,
+				D62AFC1A21772A1B0013974F /* Assets.xcassets in Resources */,
+				D62AFC2821772A8C0013974F /* README.md in Resources */,
+				D62AFC2921772A8C0013974F /* UnZipAndRar.podspec in Resources */,
+				D62AFC2721772A8C0013974F /* LICENSE in Resources */,
+				D62AFC2D21772FA30013974F /* Podfile in Resources */,
+				D62AFC1821772A1A0013974F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C5987B74BB903B376B89866B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SHPathManager/SHPathManager.framework",
+				"${BUILT_PRODUCTS_DIR}/SHTManager/SHTManager.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/UnrarKit/UnrarKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHPathManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHTManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnrarKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E90EEA897C1839C04E9E2513 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnZipAndRar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		D68BC439213988310031CF16 /* Sources */ = {
+		D62AFC0B21772A1A0013974F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D68BC441213988310031CF16 /* AppDelegate.swift in Sources */,
-				D655AE9B213988CD00EDD513 /* univeralZipRarObject.swift in Sources */,
+				D62AFC1521772A1A0013974F /* xxxxUnZipAndRarxx.swift in Sources */,
+				D62AFC1321772A1A0013974F /* xxxUnZipAndRarzz.swift in Sources */,
+				D62AFC2B21772AFD0013974F /* univeralZipRarObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D68BC449213988330031CF16 /* LaunchScreen.storyboard */ = {
+		D62AFC1621772A1A0013974F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D68BC44A213988330031CF16 /* Base */,
+				D62AFC1721772A1A0013974F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D62AFC1B21772A1B0013974F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D62AFC1C21772A1B0013974F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -162,7 +267,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D68BC44D213988330031CF16 /* Debug */ = {
+		D62AFC1F21772A1B0013974F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -213,8 +318,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -222,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		D68BC44E213988330031CF16 /* Release */ = {
+		D62AFC2021772A1B0013974F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -267,8 +373,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -276,38 +383,42 @@
 			};
 			name = Release;
 		};
-		D68BC450213988330031CF16 /* Debug */ = {
+		D62AFC2221772A1B0013974F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95D1A1271F5AF8F28AF15433 /* Pods-UnZipAndRar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E5VG453CHM;
-				INFOPLIST_FILE = UnZipAndRar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UnZipAndRar/UnZipAndRar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangqian.UnZipAndRar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D68BC451213988330031CF16 /* Release */ = {
+		D62AFC2321772A1B0013974F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3382E4DEA8714B94F955D04C /* Pods-UnZipAndRar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E5VG453CHM;
-				INFOPLIST_FILE = UnZipAndRar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UnZipAndRar/UnZipAndRar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangqian.UnZipAndRar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -315,25 +426,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D68BC438213988310031CF16 /* Build configuration list for PBXProject "UnZipAndRar" */ = {
+		D62AFC0A21772A1A0013974F /* Build configuration list for PBXProject "UnZipAndRar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D68BC44D213988330031CF16 /* Debug */,
-				D68BC44E213988330031CF16 /* Release */,
+				D62AFC1F21772A1B0013974F /* Debug */,
+				D62AFC2021772A1B0013974F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D68BC44F213988330031CF16 /* Build configuration list for PBXNativeTarget "UnZipAndRar" */ = {
+		D62AFC2121772A1B0013974F /* Build configuration list for PBXNativeTarget "UnZipAndRar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D68BC450213988330031CF16 /* Debug */,
-				D68BC451213988330031CF16 /* Release */,
+				D62AFC2221772A1B0013974F /* Debug */,
+				D62AFC2321772A1B0013974F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D68BC435213988310031CF16 /* Project object */;
+	rootObject = D62AFC0721772A1A0013974F /* Project object */;
 }

@@ -189,9 +189,15 @@ class universalZipRarObject: NSObject {
         jiesuoAction.isEnabled = false
         alert.addTextField { (textField2:UITextField) -> Void in
             textField2.placeholder = "Password？"
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField2, queue: OperationQueue.main) { (notification) in
+        
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField2, queue: OperationQueue.main) { (notification) in
                 jiesuoAction.isEnabled  = textField2.text != ""
             }
+            
+            
+            //            NotificationCeUITextField.textDidChangeNotification(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField2, queue: OperationQueue.main) { (notification) in
+//                jiesuoAction.isEnabled  = textField2.text != ""
+//            }
         }
         alert.addAction(cancelAction)
         alert.addAction(jiesuoAction)
