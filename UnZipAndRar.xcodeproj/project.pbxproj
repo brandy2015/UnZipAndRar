@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */,
-				D6863E0721BB4D3A00B9D518 /* other */,
+				D6863E0721BB4D3A00B9D518 /* x */,
 				D62AFC1621772A1A0013974F /* Main.storyboard */,
 				D62AFC1921772A1B0013974F /* Assets.xcassets */,
 				D62AFC1B21772A1B0013974F /* LaunchScreen.storyboard */,
@@ -94,13 +94,13 @@
 			path = UnZipAndRar;
 			sourceTree = "<group>";
 		};
-		D6863E0721BB4D3A00B9D518 /* other */ = {
+		D6863E0721BB4D3A00B9D518 /* x */ = {
 			isa = PBXGroup;
 			children = (
 				D62AFC1221772A1A0013974F /* AppDelegate.swift */,
 				D62AFC1421772A1A0013974F /* unzipVC.swift */,
 			);
-			path = other;
+			path = x;
 			sourceTree = "<group>";
 		};
 		FAFDF0EE1619B9C9DC896C60 /* Frameworks */ = {
