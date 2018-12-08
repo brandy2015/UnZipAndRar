@@ -31,6 +31,11 @@ public  let userTemp = Path.userTemporary
 public  let userInbox1 = Path.userDocuments + "Inbox1"
 public  let userCookies = Path.userLibrary + "Cookies"
 public  let userPreferences = Path.userLibrary + "Preferences"
+public let userAlreadyUnZip = Path.userDocuments + "alreadyUnZip"
+
+public let userSecretFileFolder = Path.userLibrary + "SecretFileFolder"
+public let AppSupport =  userLibrary + "Application Support"
+public let userRealmFolder = Path.userLibrary + "RealmFolder"
 
 
 
@@ -48,6 +53,13 @@ public let userZip = Path.userDocuments + "Zip"
 public let userPic = Path.userDocuments + "Picture"
 
 
+public func MoveFileFromUserInbox()  {
+    if userInbox.exists{
+        for i in userInbox.children(){
+            do {try i ->> userDocument}catch{print(error)}
+        }
+    }
+}
 public func 检测音乐文件并移至Music文件夹(searchDepth:Int = 1)  {
     
     if !userMusic.exists{try?  userMusic.createDirectory()}
@@ -109,6 +121,8 @@ public func 检测视频文件并移至video文件夹(searchDepth:Int = 1)  {
             }
         }else{ /* print(i.fileName + "在Music中")*/}
     }
+    
+    
 }
 
 
@@ -219,7 +233,7 @@ public func 检测Music文件夹中的Music(searchDepth:Int = 1) -> [Path] {
         print("存在")
     }
     
-    let textFiles = userMusic.find(searchDepth: searchDepth) { path in
+    var textFiles = userMusic.find(searchDepth: searchDepth) { path in
         (   path.pathExtension == "mp3"  || path.pathExtension == "MP3"  ||
             path.pathExtension == "flac" || path.pathExtension == "FLAC" ||
             path.pathExtension == "m4a"  || path.pathExtension == "M4A"  ||
@@ -228,7 +242,12 @@ public func 检测Music文件夹中的Music(searchDepth:Int = 1) -> [Path] {
     }
     //        print("检测了！！！")
     //        print(textFiles)
+    textFiles.sort { (s1, s2) -> Bool in
+        s1.creationDate! > s2.creationDate!
+    }
     return textFiles
+    
+  
     
 }
 
@@ -236,7 +255,7 @@ public func 检测Music文件夹中的Music(searchDepth:Int = 1) -> [Path] {
 public func 检测Video文件夹中的Video(searchDepth:Int = 1) -> [Path] {
     if !userVideo.exists{try?  userVideo.createDirectory()}
     
-    let textFiles = userVideo.find(searchDepth: searchDepth) { path in
+    var textFiles = userVideo.find(searchDepth: searchDepth) { path in
         
         (path.pathExtension == "mov" || path.pathExtension == "MOV"   ||
             path.pathExtension == "mp4"  || path.pathExtension == "MP4"  ||
@@ -269,6 +288,9 @@ public func 检测Video文件夹中的Video(searchDepth:Int = 1) -> [Path] {
     
     print("检测了！！！")
     print(textFiles)
+    textFiles.sort { (s1, s2) -> Bool in
+        s1.creationDate! > s2.creationDate!
+    }
     return textFiles
     
 }
@@ -278,7 +300,7 @@ public func 检测PDF文件夹中的PDF(searchDepth:Int = 1) -> [Path] {
         print("存在")
     }
     
-    let textFiles = userPDF.find(searchDepth: searchDepth) { path in
+    var textFiles = userPDF.find(searchDepth: searchDepth) { path in
         (   path.pathExtension == "pdf"  || path.pathExtension == "PDF"  )
     }
     
@@ -296,6 +318,9 @@ public func 检测PDF文件夹中的PDF(searchDepth:Int = 1) -> [Path] {
     
     print("检测了！！！")
     print(textFiles)
+    textFiles.sort { (s1, s2) -> Bool in
+        s1.creationDate! > s2.creationDate!
+    }
     return textFiles
     
 }
@@ -306,9 +331,12 @@ public func 检测lmr文件夹中的lmr(searchDepth:Int = 1) -> [Path] {
         print("存在")
     }
     
-    let textFiles = userLMR.find(searchDepth: searchDepth) { path in
+    var textFiles = userLMR.find(searchDepth: searchDepth) { path in
         (   path.pathExtension == "lmr"  || path.pathExtension == "LMR"  ||
             path.pathExtension == "Lmr")
+    }
+    textFiles.sort { (s1, s2) -> Bool in
+        s1.creationDate! > s2.creationDate!
     }
     return textFiles
     
@@ -322,11 +350,14 @@ public func 检测zip文件夹中的zip(searchDepth:Int = 1) -> [Path] {
         print("存在")
     }
     
-    let textFiles = userZip.find(searchDepth: searchDepth) { path in
+    var textFiles = userZip.find(searchDepth: searchDepth) { path in
         (   path.pathExtension == "zip"  || path.pathExtension == "Zip"  || path.pathExtension == "ZIP" ||
             path.pathExtension == "RAR"  || path.pathExtension == "rar" || path.pathExtension == "Rar"
             
         )
+    }
+    textFiles.sort { (s1, s2) -> Bool in
+        s1.creationDate! > s2.creationDate!
     }
     //        print("检测了！！！")
     //        print(textFiles)
@@ -412,7 +443,29 @@ public func 获取mp3的所有信息(Pathx:Path,ImagePlaceHolder:UIImage) -> (�
     return  (mp3Asset.duration.seconds,singer,song,image,albumName,albumArt)
 }
 
-
+public func PresentShareView(VC:UIViewController? = nil,TVC:UITableViewController? = nil,Nac:UINavigationController? = nil,文件地址:[URL],显示的框:UIView){
+    
+    let activityController = UIActivityViewController(activityItems: 文件地址, applicationActivities: nil)
+    let excludedActivities = [UIActivity.ActivityType.postToFlickr, UIActivity.ActivityType.postToWeibo, UIActivity.ActivityType.message, UIActivity.ActivityType.mail, UIActivity.ActivityType.print, UIActivity.ActivityType.copyToPasteboard, UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.postToFlickr, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.postToTencentWeibo]
+    activityController.excludedActivityTypes = excludedActivities
+    activityController.popoverPresentationController?.sourceRect = CGRect(x: 4.0, y: 0.0, width: 1.0, height: 1.0)
+    activityController.popoverPresentationController?.sourceView = 显示的框
+//    activityController
+    
+    if let VC = VC{
+        
+        VC.present(activityController, animated: true, completion: nil)
+    }
+    if let TVC = TVC{
+        TVC.present(activityController, animated: true, completion: nil)
+        
+    }
+    if let Nac = Nac{
+        Nac.present(activityController, animated: true, completion: nil)
+        
+    }
+    
+}
 
 public func SHPathXshare批量分享功能(文件地址:[URL],显示的框:UIView) -> UIActivityViewController?{
     //    let fileURL = 文件地址

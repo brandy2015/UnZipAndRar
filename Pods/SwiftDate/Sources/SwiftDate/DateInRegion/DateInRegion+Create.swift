@@ -47,7 +47,7 @@ public extension DateInRegion {
 	/// - Parameter region: destination region, `nil` to use the default region
 	/// - Returns: random date
 	public static func randomDate(region: Region = SwiftDate.defaultRegion) -> DateInRegion {
-		let randomTime = TimeInterval(arc4random_uniform(UInt32.max))
+		let randomTime = TimeInterval(UInt32.random(in: UInt32.min..<UInt32.max))
 		let absoluteDate = Date(timeIntervalSince1970: randomTime)
 		return DateInRegion(absoluteDate, region: region)
 	}
@@ -62,7 +62,7 @@ public extension DateInRegion {
 	public static func randomDate(between initial: DateInRegion, and final: DateInRegion,
 								  region: Region = SwiftDate.defaultRegion) -> DateInRegion {
 		let interval = final.timeIntervalSince(initial)
-		let randomInterval = TimeInterval(arc4random_uniform(UInt32(interval)))
+		let randomInterval = TimeInterval(UInt32.random(in: UInt32.min..<UInt32(interval)))
 		return initial.addingTimeInterval(randomInterval)
 	}
 
@@ -150,8 +150,20 @@ public extension DateInRegion {
 	/// - Parameter unit: time unit value.
 	/// - Returns: instance at the beginning of the time unit; `self` if fails.
 	public func dateAtStartOf(_ unit: Calendar.Component) -> DateInRegion {
-		guard let result = self.region.calendar.rangex(of: unit, for: self.date) else { return self }
+		#if os(Linux)
+		guard let result = (self.region.calendar as NSCalendar).range(of: unit.nsCalendarUnit, for: self.date) else {
+			return self
+		}
 		return DateInRegion(result.start, region: self.region)
+		#else
+		var start: NSDate? = nil
+		var interval: TimeInterval = 0
+		guard (self.region.calendar as NSCalendar).range(of: unit.nsCalendarUnit, start: &start, interval: &interval, for: self.date),
+			let startDate = start else {
+				return self
+		}
+		return DateInRegion(startDate as Date, region: self.region)
+		#endif
 	}
 
 	/// Return a new DateInRegion that is initialized at the start of the specified components
@@ -172,10 +184,24 @@ public extension DateInRegion {
 	/// - returns: A new Moment instance.
 	public func dateAtEndOf(_ unit: Calendar.Component) -> DateInRegion {
 		// RangeOfUnit returns the start of the next unit; we will subtract one thousandth of a second
-		guard let result = self.region.calendar.rangex(of: unit, for: self.date) else { return self }
+		#if os(Linux)
+		guard let result = (self.region.calendar as NSCalendar).range(of: unit.nsCalendarUnit, for: self.date) else {
+			return self
+		}
 		let startOfNextUnit = result.start.addingTimeInterval(result.duration)
 		let endOfThisUnit = Date(timeInterval: -0.001, since: startOfNextUnit)
 		return DateInRegion(endOfThisUnit, region: self.region)
+		#else
+		var start: NSDate? = nil
+		var interval: TimeInterval = 0
+		guard (self.region.calendar as NSCalendar).range(of: unit.nsCalendarUnit, start: &start, interval: &interval, for: self.date),
+		let startDate = start else {
+			return self
+		}
+		let startOfNextUnit = startDate.addingTimeInterval(interval)
+		let endOfThisUnit = Date(timeInterval: -0.001, since: startOfNextUnit as Date)
+		return DateInRegion(endOfThisUnit, region: self.region)
+		#endif
 	}
 
 	/// Return a new DateInRegion that is initialized at the end of the specified components
@@ -230,9 +256,10 @@ public extension DateInRegion {
 	///   - hour: hour to set (`nil` to leave it unaltered)
 	///   - min: min to set (`nil` to leave it unaltered)
 	///   - secs: sec to set (`nil` to leave it unaltered)
+	///   - ms: milliseconds to set (`nil` to leave it unaltered)
 	///   - options: options for calculation
 	/// - Returns: new altered `DateInRegion` instance
-	public func dateBySet(hour: Int?, min: Int?, secs: Int?, options: TimeCalculationOptions = TimeCalculationOptions()) -> DateInRegion? {
+	public func dateBySet(hour: Int?, min: Int?, secs: Int?, ms: Int? = nil, options: TimeCalculationOptions = TimeCalculationOptions()) -> DateInRegion? {
 		guard let date = self.calendar.date(bySettingHour: (hour ?? self.hour),
 											minute: (min ?? self.minute),
 											second: (secs ?? self.second),
@@ -240,7 +267,12 @@ public extension DateInRegion {
 											matchingPolicy: options.matchingPolicy,
 											repeatedTimePolicy: options.repeatedTimePolicy,
 											direction: options.direction) else { return nil }
-		return DateInRegion(date, region: self.region)
+		guard let ms = ms else {
+			return DateInRegion(date, region: self.region)
+		}
+		var timestamp = date.timeIntervalSince1970.rounded(.down)
+		timestamp += Double(ms) / 1000.0
+		return DateInRegion(Date(timeIntervalSince1970: timestamp), region: self.region)
 	}
 
 	/// Creates a new instance by truncating the components

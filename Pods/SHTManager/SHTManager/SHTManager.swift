@@ -26,6 +26,8 @@ public class SHTManager: NSObject {
         return ThisDayStartTime(date: Now)
     }
 //        SHTManager.TodayTime(date: Now, format: "yyyyMMdd") }
+    
+    
     public  static var TodayEnd: Date { return TodayStart + 1.days - 1.seconds}
     
     
@@ -78,10 +80,7 @@ public class SHTManager: NSObject {
         // 创建一个日期格式器
         
         let a = Date.ToInt(date: date)/1000000
-//        print(a)
         let b = String.ToDate(dateString: "\(a)")
-        
-//        print(b)
         return b
     }
     

@@ -38,10 +38,10 @@ public class universalZipRarObject: NSObject {
                     print("需要密码")
                     //  弹出输入密码框
                     
-                    返回路径 = decompressRAR(From: filePathX, Password: "")
+                    返回路径 = 解压缩RARWithPath(From: filePathX, Password: "")
                 }else{
                     print("不需要密码")
-                    返回路径 = decompressRAR(From: filePathX)
+                    返回路径 = 解压缩RARWithPath(From: filePathX)
                 }
             }
         }else{print("因为不是zip和rar所以无法解压缩")}
@@ -67,7 +67,7 @@ public class universalZipRarObject: NSObject {
     
     
     //解压缩RAR
-    public func decompressRAR(From:Path,To:Path = userDocument + "ZipOrRar",Password:String? = nil) -> Path {
+    public func 解压缩RARWithPath(From:Path,To:Path = userAlreadyUnZip,Password:String? = nil) -> Path {
         let To = To + (From.fileNameWithoutEx + SHTManager.NowString)
         
         
@@ -77,7 +77,12 @@ public class universalZipRarObject: NSObject {
         }
         
         do {
-            try archive?.extractFiles(to: To.url.path, overwrite: true, progress: nil)
+            try archive?.extractFiles(to: To.url.path, overwrite: true, progress: { (Info, Progress) in
+                print(Info)
+                print(Progress)
+            })
+            
+    
             
             解压次数 = 0 //置空
         }catch{
@@ -112,7 +117,7 @@ public class universalZipRarObject: NSObject {
     
     
     //    Advanced Zip
-    public func Zip高级解压缩(From:Path,To:Path = userDocument + "ZipOrRar",密码 :String = "password")  -> Path  {
+    public func Zip高级解压缩(From:Path,To:Path = userAlreadyUnZip,密码 :String = "password",progressX: ((_ progress: Double) -> ())? = nil) -> Path  {
         print("查看一下")
         print(From.fileNameWithoutEx)
         
@@ -131,6 +136,15 @@ public class universalZipRarObject: NSObject {
                 print("解压缩进度",progress)
                 self.解压次数 = 0
                 
+                if let progressX = progressX{
+                    progressX(progress)
+                }
+                
+                
+                // Update progress handler
+//                if let progressHandler = progress{
+//                    progressHandler((currentPosition/totalSize))
+//                }
             })
             print("弹出解压成功提示")
             
@@ -184,7 +198,7 @@ public class universalZipRarObject: NSObject {
                         //zip
                         _ = self.Zip高级解压缩(From: From, 密码: x)
                     }else{
-                        _ = self.decompressRAR(From: From,Password: x)
+                        _ = self.解压缩RARWithPath(From: From,Password: x)
                     }
                 }else{print("因为不是zip和rar所以无法解压缩")}
                 
