@@ -21,8 +21,8 @@ public class universalZipRarObject: NSObject {
     public var TVC = UIViewController()
     
     var 解压次数 = 0 //用于修改弹出密码框的主题 是否显示重新输入
-    
-    public func UnzipOrRAR(filePathX:Path,VC:UIViewController) -> Path {
+    public static var shared = universalZipRarObject()
+    public func UnzipOrRAR(filePathX:Path,VC:UIViewController,progressX: ((_ progress: Double) -> ())? = nil) -> Path {
         
         var 返回路径 = Path()
         self.VC = VC
@@ -30,7 +30,12 @@ public class universalZipRarObject: NSObject {
         if let ziporRAR = isZiporRAR(From: filePathX){
             if ziporRAR{
                 //zip
-                返回路径 = Zip高级解压缩(From: filePathX)
+                //                filePathX
+                返回路径 = Zip高级解压缩(From: filePathX, progressX: { (progressx) in
+                    if let progressX = progressX{
+                        progressX(progressx)
+                    }
+                })
             }else{
                 //Rar
                 let archive = try? URKArchive(path: filePathX.url.path)
@@ -38,10 +43,23 @@ public class universalZipRarObject: NSObject {
                     print("需要密码")
                     //  弹出输入密码框
                     
-                    返回路径 = 解压缩RARWithPath(From: filePathX, Password: "")
+                    
+                    返回路径 = 解压缩RARWithPath(From: filePathX, Password: "", progressX: { (Progress) in
+                        if let progressX = progressX{
+                            progressX(Progress)
+                        }
+                        
+                    })
+                    
+                    
                 }else{
                     print("不需要密码")
-                    返回路径 = 解压缩RARWithPath(From: filePathX)
+                    返回路径 = 解压缩RARWithPath(From: filePathX, progressX: { (Progress) in
+                        if let progressX = progressX{
+                            progressX(Progress)
+                        }
+                    })
+                    
                 }
             }
         }else{print("因为不是zip和rar所以无法解压缩")}
@@ -67,7 +85,7 @@ public class universalZipRarObject: NSObject {
     
     
     //解压缩RAR
-    public func 解压缩RARWithPath(From:Path,To:Path = userAlreadyUnZip,Password:String? = nil) -> Path {
+    public func 解压缩RARWithPath(From:Path,To:Path = userAlreadyUnZip,Password:String? = nil,progressX: ((_ progress: Double) -> ())? = nil) -> Path {
         let To = To + (From.fileNameWithoutEx + SHTManager.NowString)
         
         
@@ -80,9 +98,14 @@ public class universalZipRarObject: NSObject {
             try archive?.extractFiles(to: To.url.path, overwrite: true, progress: { (Info, Progress) in
                 print(Info)
                 print(Progress)
+                
+                if let progressX = progressX{
+                    progressX(Double(Progress))
+                }
+                
             })
             
-    
+            
             
             解压次数 = 0 //置空
         }catch{
@@ -142,9 +165,9 @@ public class universalZipRarObject: NSObject {
                 
                 
                 // Update progress handler
-//                if let progressHandler = progress{
-//                    progressHandler((currentPosition/totalSize))
-//                }
+                //                if let progressHandler = progress{
+                //                    progressHandler((currentPosition/totalSize))
+                //                }
             })
             print("弹出解压成功提示")
             
@@ -215,7 +238,7 @@ public class universalZipRarObject: NSObject {
             textField2.placeholder = "Password？"
             
             
-           
+            
             
             NotificationCenter.default.addObserver(forName:  UITextField.textDidChangeNotification, object: textField2, queue: OperationQueue.main) { (notification) in
                 jiesuoAction.isEnabled  = textField2.text != ""
