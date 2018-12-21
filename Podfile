@@ -10,7 +10,7 @@ target 'UnZipAndRar' do
     pod 'UnrarKit'
     pod 'SSZipArchive'
     pod 'SHTManager'
-pod 'SHPathManager'#,'~> 0.2.0'
+    pod 'SHPathManager'#,'~> 0.2.0'
 end
 
 
