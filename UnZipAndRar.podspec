@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "UnZipAndRar"
-  s.version      = "0.2.6"
+  s.version      = "0.2.7"
   s.summary      = "解压缩的库xxxxxxxxxxxxxxxxx"
   s.description  = <<-DESC
                     解压缩支持.zip .rar格式xxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -41,8 +41,8 @@ Pod::Spec.new do |s|
 
   s.authors            = { "Brandy" => "zhangqianbrandy2012@gmail.com" }
   s.platform     = :ios, "10.1"
-  s.source       = { :git => "https://github.com/brandy2015/UnZipAndRar.git", :tag => "0.2.6"}
-  s.source_files = "UnZipAndRar/*"
+  s.source       = { :git => "https://github.com/brandy2015/UnZipAndRar.git", :tag => "0.2.7"}
+  s.source_files = "UnZipAndRar/Source/*"
 
 
   # s.social_media_url   = "http://twitter.com/Brandy"
