@@ -8,7 +8,7 @@ target 'UnZipAndRar' do
     pod 'Zip'
     pod 'FileKit'
     pod 'UnrarKit'
-    pod 'SSZipArchive'
+    #pod 'SSZipArchive'
     pod 'SHTManager'
     pod 'SHPathManager'#,'~> 0.2.0'
 end

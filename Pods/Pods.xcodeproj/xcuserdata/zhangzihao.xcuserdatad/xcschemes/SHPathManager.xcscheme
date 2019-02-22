@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F05824BB7A6595245E6A095379F62E6"
+               BlueprintIdentifier = "69241304E11CB0A939A2058CA31A461A"
+               BuildableName = "SHPathManager.framework"
                BlueprintName = "SHPathManager"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SHPathManager.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
