@@ -187,3 +187,14 @@ public func GetFileType(GivePath:Path) -> FileType {
 //    }
 //}
 
+
+//锁屏后无法调用文件此方法处理文件可以访问
+//处理文件Protection权限为None以便后台调用Music
+public func 处理文件Protection权限为None以便后台调用Music(路径:[Path]) {
+    for i in 路径{
+        let attributes:NSDictionary = NSDictionary(dictionary: [FileAttributeKey.protectionKey:FileProtectionType.none])
+        do {try FileManager.default.setAttributes(attributes as! [FileAttributeKey : Any], ofItemAtPath: i.url.path)
+        }catch{print("错误")}
+    }
+}
+

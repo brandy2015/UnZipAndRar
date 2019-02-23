@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D69806AF3DAF7C56B4EF40B3F993C5E"
+               BlueprintIdentifier = "0B1AFFF72CBD8690B2F650B2DE6F8495"
                BuildableName = "UnrarKit.framework"
                BlueprintName = "UnrarKit"
                ReferencedContainer = "container:Pods.xcodeproj">

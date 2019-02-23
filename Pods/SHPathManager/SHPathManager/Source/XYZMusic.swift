@@ -32,7 +32,11 @@ open class XYZMusic: XYZFile {
     public init(Pathx: Path,MusicImage:UIImage? = nil) {
         super.init(Pathx: Pathx)
         
-        guard Pathx.exists else{return}
+        guard Pathx.exists else{
+            print("exists没执行")
+            return
+            
+        }
         
         
         if let MusicImage = MusicImage{
@@ -42,12 +46,14 @@ open class XYZMusic: XYZFile {
         
         
         guard let formats = mp3Asset?.availableMetadataFormats else {
+            print("formats没执行")
             return
         }
         var MetaX: [String? : Any?] = [:]
         for format in formats{
             
             guard let metaData = mp3Asset?.metadata(forFormat: format) else{
+                print("metaData没执行")
                 return
             }
             MetaX = AVMetadataItem.ToInfoDic(metaData: metaData)
@@ -78,3 +84,147 @@ open class XYZMusic: XYZFile {
     
     
 }
+
+
+
+
+//for item in metadataList {
+//
+//    guard let key = item.commonKey?.rawValue, let value = item.value else{
+//        continue
+//    }
+//
+//    switch key {
+//    case "title" : trackLabel.text = value as? String
+//    case "artist": artistLabel.text = value as? String
+//    case "artwork" where value is Data : artistImage.image = UIImage(data: value as! Data)
+//    default:
+//        continue
+//    }
+//}
+
+
+
+
+
+
+
+////////////////
+//let audioInfo = MPNowPlayingInfoCenter.defaultCenter()
+//var nowPlayingInfo:[String:AnyObject] = [:]
+//let playerItem = AVPlayerItem(URL: url)
+//let metadataList = playerItem.asset.metadata
+//for item in metadataList {
+//    if item.commonKey != nil && item.value != nil {
+//        if item.commonKey  == "title" {
+//            println(item.stringValue)
+//            nowPlayingInfo[MPMediaItemPropertyTitle] = item.stringValue
+//        }
+//        if item.commonKey   == "type" {
+//            println(item.stringValue)
+//            nowPlayingInfo[MPMediaItemPropertyGenre] = item.stringValue
+//        }
+//        if item.commonKey  == "albumName" {
+//            println(item.stringValue)
+//            nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = item.stringValue
+//        }
+//        if item.commonKey   == "artist" {
+//            println(item.stringValue)
+//            nowPlayingInfo[MPMediaItemPropertyArtist] = item.stringValue
+//        }
+//        if item.commonKey  == "artwork" {
+//            if let image = UIImage(data: item.dataValue) {
+//                nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
+//                println(image.description)
+//            }
+//        }
+//    }
+//}
+//
+//audioInfo.nowPlayingInfo = nowPlayingInfo
+
+//do {
+//    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+//    print("Playback OK")
+//    try AVAudioSession.sharedInstance().setActive(true)
+//    print("Session is Active")
+//} catch {
+//    print(error)
+//}
+
+
+
+//import ID3Edit
+//...
+//do
+//{
+//    // Open the file
+//    let mp3File = try MP3File(path: "/Users/Example/Music/example.mp3")
+//    // Use MP3File(data: data) data being an NSData object
+//    // to load an MP3 file from memory
+//    // NOTE: If you use the MP3File(data: NSData?) initializer make
+//    //       sure to set the path before calling writeTag() or an
+//    //       exception will be thrown
+//
+//    // Get song information
+//    print("Title:\t\(mp3File.getTitle())")
+//    print("Artist:\t\(mp3File.getArtist())")
+//    print("Album:\t\(mp3File.getAlbum())")
+//    print("Lyrics:\n\(mp3File.getLyrics())")
+//
+//    let artwork = mp3File.getArtwork()
+//
+//    // Write song information
+//    mp3File.setTitle("The new song title")
+//    mp3File.setArtist("The new artist")
+//    mp3File.setAlbum("The new album")
+//    mp3File.setLyrics("Yeah Yeah new lyrics")
+//
+//    if let newArt = NSImage(contentsOfFile: "/Users/Example/Pictures/example.png")
+//    {
+//        mp3File.setArtwork(newArt, isPNG: true)
+//    }
+//    else
+//    {
+//        print("The artwork referenced does not exist.")
+//    }
+//
+//    // Save the information to the mp3 file
+//    mp3File.writeTag() // or mp3.getMP3Data() returns the NSData
+//    // of the mp3 file
+//}
+//catch ID3EditErrors.FileDoesNotExist
+//{
+//    print("The file does not exist.")
+//}
+//catch ID3EditErrors.NotAnMP3
+//{
+//    print("The file you attempted to open was not an mp3 file.")
+//}
+//catch {}
+
+
+
+//func audioFileInfo(url: URL) -> NSDictionary? {
+//    var fileID: AudioFileID? = nil
+//    var status:OSStatus = AudioFileOpenURL(url as CFURL, .readPermission, kAudioFileFLACType, &fileID)
+//    
+//    guard status == noErr else { return nil }
+//    
+//    var dict: CFDictionary? = nil
+//    var dataSize = UInt32(MemoryLayout<CFDictionary?>.size(ofValue: dict))
+//    
+//    guard let audioFile = fileID else { return nil }
+//    
+//    status = AudioFileGetProperty(audioFile, kAudioFilePropertyInfoDictionary, &dataSize, &dict)
+//    
+//    guard status == noErr else { return nil }
+//    
+//    AudioFileClose(audioFile)
+//    
+//    guard let cfDict = dict else { return nil }
+//    
+//    let tagsDict = NSDictionary.init(dictionary: cfDict)
+//    
+//    return tagsDict
+//}

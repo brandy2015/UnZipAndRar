@@ -16,7 +16,7 @@ public extension String{
 }
 
 
-public class SHTManager: NSObject {
+public class XYZTime: NSObject {
     
     public static var SoHowTimeZone = 8.hours
     public static var Now: Date {
@@ -33,10 +33,10 @@ public class SHTManager: NSObject {
     
     
     
-    public  static var ThisYearStart: Date { return SHTManager.ThisYearStartTime() }
-    public  static var ThisYearEnd: Date { return SHTManager.ThisYearEndTime() }
-    public  static var ThisMonthStart: Date { return SHTManager.ThisMonthStartTime() }
-    public  static var ThisMonthEnd: Date { return SHTManager.ThisMonthEndTime(date: Now) }
+    public  static var ThisYearStart: Date { return XYZTime.ThisYearStartTime() }
+    public  static var ThisYearEnd: Date { return XYZTime.ThisYearEndTime() }
+    public  static var ThisMonthStart: Date { return XYZTime.ThisMonthStartTime() }
+    public  static var ThisMonthEnd: Date { return XYZTime.ThisMonthEndTime(date: Now) }
     
     
     
@@ -48,10 +48,10 @@ public class SHTManager: NSObject {
     public  static var PreviousMonthEnd: Date { return ThisMonthEnd - 1.months }
     
     
-    public  static var YesterdayStart: Date { return SHTManager.TodayStart - 1.days }
-    public  static var YesterdayEnd: Date { return SHTManager.TodayEnd - 1.days}
-    public  static var TomorrowStart: Date { return SHTManager.TodayStart + 1.days}
-    public  static var TomorrowEnd: Date { return  SHTManager.TodayEnd + 1.days }
+    public  static var YesterdayStart: Date { return XYZTime.TodayStart - 1.days }
+    public  static var YesterdayEnd: Date { return XYZTime.TodayEnd - 1.days}
+    public  static var TomorrowStart: Date { return XYZTime.TodayStart + 1.days}
+    public  static var TomorrowEnd: Date { return  XYZTime.TodayEnd + 1.days }
     
     
     
@@ -82,7 +82,7 @@ public class SHTManager: NSObject {
         return b
     }
     
-     public class func ThisYearEndTime(date:Date = SHTManager.ThisYearStartTime())-> Date{
+     public class func ThisYearEndTime(date:Date = XYZTime.ThisYearStartTime())-> Date{
         return date + 1.years - 1.seconds
     }
     
@@ -140,15 +140,15 @@ public class SHTManager: NSObject {
     }
     //时间差值
     //判断这个月多少天
-    public class func CountCurrentMonthDays(month:Date = SHTManager.Now) -> Int {
-        return  SHTManager.ThisMonthStartTime(date: month).monthDays
+    public class func CountCurrentMonthDays(month:Date = XYZTime.Now) -> Int {
+        return  XYZTime.ThisMonthStartTime(date: month).monthDays
     }
     
     
     //起始时间到月末有多少天
-    public class func CountCurrentDayToMonthEndDays(Day:Date = SHTManager.Now) -> Double {
+    public class func CountCurrentDayToMonthEndDays(Day:Date = XYZTime.Now) -> Double {
    
-        let t = SHTManager.GetNextMonthStart(date: Day).timeIntervalSince(Day)/24/3600
+        let t = XYZTime.GetNextMonthStart(date: Day).timeIntervalSince(Day)/24/3600
         return t
     }
     
@@ -168,7 +168,7 @@ public extension String{
         let formatter = DateFormatter()
         formatter.timeZone = timeZone
         formatter.dateFormat = format2
-        let date = formatter.date(from: dateString) ?? SHTManager.Now
+        let date = formatter.date(from: dateString) ?? XYZTime.Now
         
         return date
     }
@@ -200,10 +200,8 @@ public extension Date{
         let date = formatter.string(from: self)
         return date
     }
-    
 
         public static func XYZToString(date:Date,format:String = "yyyyMMddHHmmss") -> String {
-            
             let nowDate = date//Now
             let timeZone = TimeZone.init(identifier: "UTC")
             let formatter = DateFormatter()
@@ -214,12 +212,7 @@ public extension Date{
             let date = formatter.string(from: nowDate)
             return date //date.components(separatedBy: " ").first!
         }
-        
-        
-    
-    
-    
-    
+
     public func 时间格式的调整(date:Date,format:String = "yyyy年MM月dd日 HH:mm:ss") -> String  {
         // 创建一个日期格式器
         let dformatter = DateFormatter()
@@ -240,7 +233,6 @@ public extension Date{
         formatter.timeZone = timeZone
         //    formatter.locale = Locale.init(identifier: "zh_CN")
         formatter.dateFormat = format//"yyyy-MM-dd HH:mm"
-        
         let date = formatter.string(from: nowDate)
         return date //date.components(separatedBy: " ").first!
     }
@@ -254,26 +246,47 @@ public extension Date{
         // 为日期格式器设置格式字符串
         let timeZone = TimeZone(abbreviation:  "UTC")
         dformatter.timeZone=timeZone
-
         let datestr = dformatter.string(from: date)
         let message =  "\(datestr)"
-
-
         return Int64(message) ?? Int64(0)
     }
     
     public  static func SeparateDate(time:Date) -> (Year:Int,Month:Int,Day:Int,Hour:Int,Min:Int,Sec:Int){
-        let FullTime = Date.ToInt(date: time) 
-        
-       
-     
+        let FullTime = Date.ToInt(date: time)
         let Year  = FullTime/10000000000
         let Month = (FullTime/100000000)%100
         let Day   = (FullTime/1000000)%100
         let Hour  = (FullTime/10000)%100
         let Min   = (FullTime/100)%100
         let Sec   = (FullTime)%100
-        
         return (Int(Year),Int(Month),Int(Day),Int(Hour),Int(Min),Int(Sec))
     }
+}
+
+public func 时间格式的调整(date:Date,format:String = "yyyy年MM月dd日 HH:mm:ss") -> String  {
+    // 创建一个日期格式器
+    let dformatter = DateFormatter()
+    // 为日期格式器设置格式字符串
+    dformatter.dateFormat = format
+    // 使用日期格式器格式化日期、时间
+    let datestr = dformatter.string(from: date)
+    let message =  "\(datestr)"
+    return message
+}
+public func sendTime发布时间转文字方法(发布时间:Date) -> String {
+    let date = DateFormatter()
+    date.dateFormat = "Y.M.d H:mm"
+    let datetostring = date.string(from: 发布时间)
+    return datetostring
+}
+
+public func 时间格式的调整2只剩年月日时间创建录音(date:Date) -> String  {
+    // 创建一个日期格式器
+    let dformatter = DateFormatter()
+    // 为日期格式器设置格式字符串
+    dformatter.dateFormat = "yyyyMMddHHmmss"
+    // 使用日期格式器格式化日期、时间
+    let datestr = dformatter.string(from: date)
+    let message =  "\(datestr)"
+    return message
 }

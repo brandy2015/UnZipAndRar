@@ -66,7 +66,7 @@ public class universalZipRarObject: NSObject {
     
     //解压缩RAR
     public func 解压缩RARWithPath(VC:UIViewController,From:Path,To:Path = userAlreadyUnZip,Password:String? = nil,progressX: ((_ progress: Double) -> ())? = nil) -> Path {
-        let To = To + (From.fileNameCutEx + SHTManager.NowString)
+        let To = To + (From.fileNameCutEx + XYZTime.NowString)
         
         
         let archive = try? URKArchive(path: From.url.path)
@@ -125,7 +125,7 @@ public class universalZipRarObject: NSObject {
         print(From.fileNameCutEx)
         
         
-        let To = To + (From.fileNameCutEx + SHTManager.NowString)
+        let To = To + (From.fileNameCutEx + XYZTime.NowString)
         
         print("文件后缀去掉")
         print(To)

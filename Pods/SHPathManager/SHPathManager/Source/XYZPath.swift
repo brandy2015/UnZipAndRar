@@ -80,7 +80,7 @@ public func MoveToMusic(searchDepth:Int = 1)  {
         if i^ != userMusic{
             do {       try i ->> (userMusic + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userMusic + 新命名)
                 }catch{print("移动失败")}
             }
@@ -110,7 +110,7 @@ public func MoveToVideo(searchDepth:Int = 1)  {
         if i^ != userVideo{
             do {       try i ->> (userVideo + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userVideo + 新命名)
                 }catch{print("移动失败")}
             }
@@ -126,7 +126,7 @@ public func MoveToPDF(searchDepth:Int = 1)  {
         if i^ != userPDF{
             do {       try i ->> (userPDF + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userPDF + 新命名)
                 }catch{print("移动失败")}
             }
@@ -143,7 +143,7 @@ public func MoveToLMR(searchDepth:Int = 1)  {
         if i^ != userLMR{
             do {       try i ->> (userLMR + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userLMR + 新命名)
                 }catch{print("移动失败")}
             }
@@ -160,7 +160,7 @@ public func MoveToZip(searchDepth:Int = 1)  {
         if i^ != userZip{
             do {       try i ->> (userZip + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userZip + 新命名)
                 }catch{print("移动失败")}
             }
@@ -183,7 +183,7 @@ public func MoveToPic(searchDepth:Int = 1)  {
         if i^ != userPic{
             do {       try i ->> (userPic + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = (SHTManager.NowString + i.fileName)
+                    let 新命名 = (XYZTime.NowString + i.fileName)
                     try i ->> (userPic + 新命名)
                 }catch{print("移动失败")}
             }
@@ -229,7 +229,7 @@ public func GetPathsInVideo(searchDepth:Int = 1) -> [Path] {
         if i^ != userVideo{
             do {       try i ->> (userVideo + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = SHTManager.NowString + i.fileName
+                    let 新命名 = XYZTime.NowString + i.fileName
                     try i ->> (userVideo + 新命名)
                 }catch{print("移动失败")}
             }
@@ -253,7 +253,7 @@ public func GetPathsInPDF(searchDepth:Int = 1) -> [Path] {
         if i^ != userPDF{
             do {       try i ->> (userPDF + i.fileName)}catch{print("再次尝试移动")
                 do {
-                    let 新命名 = SHTManager.NowString + i.fileName
+                    let 新命名 = XYZTime.NowString + i.fileName
                     try i ->> (userPDF + 新命名)
                 }catch{print("移动失败")}
             }
