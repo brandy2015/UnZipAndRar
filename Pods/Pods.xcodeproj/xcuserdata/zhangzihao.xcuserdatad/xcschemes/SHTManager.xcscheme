@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "91FAC163BCE8D59DC37EC12B5E51B398"
+               BlueprintIdentifier = "CD5F6D75D2D0A9CDCA6E1301077FC62D"
                BuildableName = "SHTManager.framework"
                BlueprintName = "SHTManager"
                ReferencedContainer = "container:Pods.xcodeproj">

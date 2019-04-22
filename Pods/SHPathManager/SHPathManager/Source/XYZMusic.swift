@@ -8,8 +8,6 @@
 
 import UIKit
 import FileKit
-import UIKit
-import FileKit
 import MediaPlayer
 import AVFoundation
 import SHTManager
@@ -23,7 +21,7 @@ open class XYZMusic: XYZFile {
     public var albumName :String?           = nil           //专辑名
     
     //专辑封面
-    let mySize               = CGSize(width: 400, height: 400)
+    let mySize = CGSize(width: 400, height: 400)
     public var albumArt : MPMediaItemArtwork? = nil
     
     
@@ -78,13 +76,37 @@ open class XYZMusic: XYZFile {
         if self.albumName == nil {
             self.albumName = "未知"
         }
-        
-        self.albumArt = MPMediaItemArtwork(image: self.MusicImageX ?? UIImage())
+        self.albumArt = MPMediaItemArtwork(boundsSize: mySize) { (size) -> UIImage in
+            return self.MusicImageX ?? UIImage()
+        }
+       
+//        self.albumArt = MPMediaItemArtwork(image: self.MusicImageX ?? UIImage())
     }
     
     
 }
 
+public extension AVMetadataItem{
+      static func ToInfoDic(metaData:[AVMetadataItem]) -> [String?:Any?]{
+        var MP3Data : [String?:Any?] = [:]
+        for metadataItem in metaData{
+            if let key = metadataItem.commonKey?.rawValue ,let value = metadataItem.value{
+                MP3Data[key] = value
+            }
+            if metadataItem.commonKey?.rawValue == "artwork"{
+                print("获取了图片")
+                if let artworkData = metadataItem.value as? Data{
+                    MP3Data["artwork"] = artworkData
+                }
+            }else{
+                print("没有图片！！")
+            }
+        }
+        
+        
+        return MP3Data
+    }
+}
 
 
 

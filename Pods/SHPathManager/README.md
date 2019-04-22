@@ -9,7 +9,7 @@ Easy way in Swift Path Managing
 * Xcode 10.1 or higher
 * iOS 10.1 or higher (may work on previous versions, just did not test it)
 * ARC
-* Swift 4.2
+* Swift 5.0
 
 ## Demo
 

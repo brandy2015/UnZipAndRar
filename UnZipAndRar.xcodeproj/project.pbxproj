@@ -17,7 +17,7 @@
 		D62AFC2821772A8C0013974F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2521772A8C0013974F /* README.md */; };
 		D62AFC2921772A8C0013974F /* UnZipAndRar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */; };
 		D62AFC2D21772FA30013974F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2C21772FA30013974F /* Podfile */; };
-		D63F7B4A21776232004A9DA3 /* univeralZipRarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */; };
+		D63F7B4A21776232004A9DA3 /* XYZZipObjcet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		D62AFC2521772A8C0013974F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnZipAndRar.podspec; sourceTree = "<group>"; };
 		D62AFC2C21772FA30013974F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = univeralZipRarObject.swift; sourceTree = "<group>"; };
+		D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZZipObjcet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 		D6863E0721BB4D3A00B9D518 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D63F7B4921776232004A9DA3 /* univeralZipRarObject.swift */,
+				D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -190,26 +190,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SHPathManager/SHPathManager.framework",
-				"${BUILT_PRODUCTS_DIR}/SHTManager/SHTManager.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
-				"${BUILT_PRODUCTS_DIR}/UnrarKit/UnrarKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHPathManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHTManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnrarKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -247,7 +232,7 @@
 			files = (
 				D62AFC1521772A1A0013974F /* unzipVC.swift in Sources */,
 				D62AFC1321772A1A0013974F /* AppDelegate.swift in Sources */,
-				D63F7B4A21776232004A9DA3 /* univeralZipRarObject.swift in Sources */,
+				D63F7B4A21776232004A9DA3 /* XYZZipObjcet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +389,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangqian.UnZipAndRar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -424,7 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangqian.UnZipAndRar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

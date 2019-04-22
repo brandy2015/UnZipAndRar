@@ -10,9 +10,13 @@ import UIKit
 import SwiftDate
 
 public extension String{
-    public  static let YearMonthDayString = "yyyyMMdd"
-    public  static let YearMonthString = "yyyyMM"
-    public  static let YearString = "yyyy"
+    static let YearMonthDayString = "yyyyMMdd"
+    static let YearMonthString = "yyyyMM"
+    static let YearString = "yyyy"
+
+    static let YearMonthDayString_ = "yyyy-MM-dd"
+    static let YearMonthString_ = "yyyy-MM"
+    static let YearString_ = "yyyy"
 }
 
 
@@ -23,7 +27,7 @@ public class XYZTime: NSObject {
         return Date() + SoHowTimeZone
     }
     public  static var NowString: String {
-        return Now.XYZToString}
+        return Now.XYZToString()}
     
     public  static var TodayStart: Date {
         return ThisDayStartTime(date: Now)
@@ -59,8 +63,8 @@ public class XYZTime: NSObject {
     public class func ThisDayStartTime(date:Date = Now)-> Date{
         // 创建一个日期格式器
         
-        let a = Date.ToInt(date: date)/1000000
-        let b = String.ToDate(dateString: "\(a)")
+        let a = date.ToXYZInt()/1000000
+        let b = "\(a)".ToXYZDate()//String.ToDate(dateString: "\(a)".ToXYZDate())
         return b
     }
     
@@ -76,8 +80,8 @@ public class XYZTime: NSObject {
     public class func ThisYearStartTime(date:Date = Now)-> Date{
         // 创建一个日期格式器
         
-        let a = Date.ToInt(date: date)/10000000000
-        let b = String.ToDate(dateString: "\(a)")
+        let a = date.ToXYZInt()/10000000000
+        let b = "\(a)".ToXYZDate()//String.ToDate(dateString: )
         print(b)
         return b
     }
@@ -88,8 +92,8 @@ public class XYZTime: NSObject {
     
     public class func ThisMonthStartTime(date:Date = Now) -> Date{
         // 创建一个日期格式器
-        let a = Date.ToInt(date: date)/100000000
-        let b = String.ToDate(dateString: "\(a)")
+        let a = date.ToXYZInt()/100000000
+        let b = "\(a)".ToXYZDate()//String.ToDate(dateString: )
         return b
     }
     
@@ -156,11 +160,11 @@ public class XYZTime: NSObject {
 
 public extension String{
     //转String为Date
-    public  static func ToDate(dateString:String,format:String = "yyyyMMddHHmmss") -> Date {
+    func ToXYZDate(format:String = "yyyyMMddHHmmss") -> Date {
         //处理给予的String时间的格式
         var format2 = format
-        if dateString.count != format.count{
-           let 位置 = dateString.startIndex..<dateString.endIndex
+        if self.count != format.count{
+           let 位置 = self.startIndex..<self.endIndex
             format2 = String(format[位置])
         }
 
@@ -168,7 +172,7 @@ public extension String{
         let formatter = DateFormatter()
         formatter.timeZone = timeZone
         formatter.dateFormat = format2
-        let date = formatter.date(from: dateString) ?? XYZTime.Now
+        let date = formatter.date(from: self) ?? XYZTime.Now
         
         return date
     }
@@ -188,56 +192,39 @@ public extension String{
 
 public extension Date{
     //转Date为String
-    
-    public var XYZToString:String {
-        let format:String = "yyyyMMddHHmmss"
+    func XYZToString(format:String = "yyyyMMddHHmmss") -> String {
         let timeZone = TimeZone.init(identifier: "UTC")
         let formatter = DateFormatter()
         formatter.timeZone = timeZone
         //    formatter.locale = Locale.init(identifier: "zh_CN")
         formatter.dateFormat = format//"yyyy-MM-dd HH:mm"
-        
-        let date = formatter.string(from: self)
-        return date
+        return formatter.string(from: self)
     }
+    
+//    public var XYZToString:String {
+//        let format:String = "yyyyMMddHHmmss"
+//        let timeZone = TimeZone.init(identifier: "UTC")
+//        let formatter = DateFormatter()
+//        formatter.timeZone = timeZone
+//        //    formatter.locale = Locale.init(identifier: "zh_CN")
+//        formatter.dateFormat = format//"yyyy-MM-dd HH:mm"
+//        let date = formatter.string(from: self)
+//        return date
+//    }
 
-        public static func XYZToString(date:Date,format:String = "yyyyMMddHHmmss") -> String {
-            let nowDate = date//Now
-            let timeZone = TimeZone.init(identifier: "UTC")
-            let formatter = DateFormatter()
-            formatter.timeZone = timeZone
-            //    formatter.locale = Locale.init(identifier: "zh_CN")
-            formatter.dateFormat = format//"yyyy-MM-dd HH:mm"
-            
-            let date = formatter.string(from: nowDate)
-            return date //date.components(separatedBy: " ").first!
-        }
+    
 
-    public func 时间格式的调整(date:Date,format:String = "yyyy年MM月dd日 HH:mm:ss") -> String  {
+    func 时间格式的调整(format:String = "yyyy年MM月dd日 HH:mm:ss") -> String  {
         // 创建一个日期格式器
         let dformatter = DateFormatter()
         // 为日期格式器设置格式字符串
         dformatter.dateFormat = format
         // 使用日期格式器格式化日期、时间
-        let datestr = dformatter.string(from: date)
-        let message =  "\(datestr)"
-        return message
+        return dformatter.string(from: self)
     }
     
-    //转Date为String
-    public  static func ToString(date:Date,format:String = "yyyyMMddHHmmss") -> String {
-        
-        let nowDate = date//Now
-        let timeZone = TimeZone.init(identifier: "UTC")
-        let formatter = DateFormatter()
-        formatter.timeZone = timeZone
-        //    formatter.locale = Locale.init(identifier: "zh_CN")
-        formatter.dateFormat = format//"yyyy-MM-dd HH:mm"
-        let date = formatter.string(from: nowDate)
-        return date //date.components(separatedBy: " ").first!
-    }
-    
-    public  static func ToInt(date:Date,format:String = "yyyyMMddHHmmss") -> Int64  {
+
+    func ToXYZInt(format:String = "yyyyMMddHHmmss") -> Int64  {
         // 创建一个日期格式器
         let dformatter = DateFormatter()
         // 为日期格式器设置格式字符串
@@ -245,14 +232,14 @@ public extension Date{
         // 使用日期格式器格式化日期、时间
         // 为日期格式器设置格式字符串
         let timeZone = TimeZone(abbreviation:  "UTC")
-        dformatter.timeZone=timeZone
+        dformatter.timeZone = timeZone
         let datestr = dformatter.string(from: date)
         let message =  "\(datestr)"
         return Int64(message) ?? Int64(0)
     }
     
-    public  static func SeparateDate(time:Date) -> (Year:Int,Month:Int,Day:Int,Hour:Int,Min:Int,Sec:Int){
-        let FullTime = Date.ToInt(date: time)
+    func SeparateDate( ) -> (Year:Int,Month:Int,Day:Int,Hour:Int,Min:Int,Sec:Int){
+        let FullTime = self.ToXYZInt()
         let Year  = FullTime/10000000000
         let Month = (FullTime/100000000)%100
         let Day   = (FullTime/1000000)%100
@@ -261,32 +248,23 @@ public extension Date{
         let Sec   = (FullTime)%100
         return (Int(Year),Int(Month),Int(Day),Int(Hour),Int(Min),Int(Sec))
     }
+
+
+    
+    func sendTime发布时间转文字方法() -> String {
+        let date = DateFormatter()
+        date.dateFormat = "Y.M.d H:mm"
+        return date.string(from: self)
+    }
+    
+    func 时间格式的调整2只剩年月日时间创建录音() -> String  {
+        // 创建一个日期格式器
+        let dformatter = DateFormatter()
+        // 为日期格式器设置格式字符串
+        dformatter.dateFormat = "yyyyMMddHHmmss"
+        // 使用日期格式器格式化日期、时间
+        return dformatter.string(from: self)
+    }
 }
 
-public func 时间格式的调整(date:Date,format:String = "yyyy年MM月dd日 HH:mm:ss") -> String  {
-    // 创建一个日期格式器
-    let dformatter = DateFormatter()
-    // 为日期格式器设置格式字符串
-    dformatter.dateFormat = format
-    // 使用日期格式器格式化日期、时间
-    let datestr = dformatter.string(from: date)
-    let message =  "\(datestr)"
-    return message
-}
-public func sendTime发布时间转文字方法(发布时间:Date) -> String {
-    let date = DateFormatter()
-    date.dateFormat = "Y.M.d H:mm"
-    let datetostring = date.string(from: 发布时间)
-    return datetostring
-}
 
-public func 时间格式的调整2只剩年月日时间创建录音(date:Date) -> String  {
-    // 创建一个日期格式器
-    let dformatter = DateFormatter()
-    // 为日期格式器设置格式字符串
-    dformatter.dateFormat = "yyyyMMddHHmmss"
-    // 使用日期格式器格式化日期、时间
-    let datestr = dformatter.string(from: date)
-    let message =  "\(datestr)"
-    return message
-}

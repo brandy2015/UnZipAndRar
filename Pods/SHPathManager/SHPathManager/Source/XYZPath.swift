@@ -289,20 +289,3 @@ public func GetPathsInZip(searchDepth:Int = 1) -> [Path] {
     }
     return textFiles
 }
-
-
-
-
-
-
-
-
-//转换方法
-
-extension String{var ToURL :URL{return URL(fileURLWithPath: self)}}
-
-public func PathsToURLs(Paths:[Path]) -> [URL] {
-    var BackURLs = [URL]()
-    for i in Paths{ BackURLs.append(i.url)}
-    return BackURLs
-}

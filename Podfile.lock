@@ -1,15 +1,15 @@
 PODS:
   - FileKit (5.2.0)
-  - SHPathManager (0.3.6):
+  - SHPathManager (1.0.3):
     - FileKit
     - SHTManager
     - SwiftDate
-  - SHTManager (0.3.3):
+  - SHTManager (1.0.2):
     - SwiftDate
-  - SwiftDate (5.1.0)
-  - UnrarKit (2.8.1):
-    - UnrarKit/unrar-lib (= 2.8.1)
-  - UnrarKit/unrar-lib (2.8.1)
+  - SwiftDate (6.0.2)
+  - UnrarKit (2.9):
+    - UnrarKit/unrar-lib (= 2.9)
+  - UnrarKit/unrar-lib (2.9)
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -31,12 +31,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FileKit: 10bfd8a3023a0b09f24c9f49546cbbddf43fd464
-  SHPathManager: a16591e1dfb177b41d7b06ad64b3958a6e365daf
-  SHTManager: 71d50fb7f062df324e1c7e45ed850d346cac6717
-  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
-  UnrarKit: 167602bda6542e575c4cdc068509d6b787f84468
+  SHPathManager: eaa033c734437e6f7d384e0093612d1f70fc7af8
+  SHTManager: 76205c8692aef617b0cd7918f7b7dd25b20a97ad
+  SwiftDate: bbed9b23bfec599bd62b9a305afc554f7bd0eb6f
+  UnrarKit: 99e3f0222a98a212188e1a6975dcf5aa798d26dd
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
 PODFILE CHECKSUM: cbb5527e44eb7f515f41b7f41fd4f255d3d7d508
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.0.beta.3

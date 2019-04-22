@@ -17,6 +17,12 @@ public func PresentShareView(VC:UIViewController,URLs:[URL],on View:UIView){
     VC.present(activityController, animated: true, completion: nil)
 }
 
+public extension UIViewController{
+      func PresentShareView(URLs:[URL]){
+        let activityController = XYZShareActivityVC(URLs: URLs, on: self.view)
+        self.present(activityController, animated: true, completion: nil)
+    }
+}
 
 public func XYZShareActivityVC(URLs:[URL],on View:UIView) -> UIActivityViewController{
     //    let fileURL = 文件地址

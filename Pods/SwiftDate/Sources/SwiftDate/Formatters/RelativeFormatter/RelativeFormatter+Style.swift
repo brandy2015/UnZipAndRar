@@ -8,6 +8,12 @@
 
 import Foundation
 
+#if os(Linux)
+import Glibc
+#else
+import Darwin
+#endif
+
 /// Languages table.
 /// In order to be fully compatible with Linux environment we need to
 /// handle directly with .swift files instead of plain text files.
@@ -37,12 +43,12 @@ public protocol RelativeFormatterLang {
 
 public extension RelativeFormatter {
 
-	public enum PluralForm: String {
+	enum PluralForm: String {
 		case zero, one, two, few, many, other
 	}
 
 	/// Style for formatter
-	public struct Style {
+	struct Style {
 
 		/// Flavours supported by the style, specified in order.
 		/// The first available flavour for specified locale is used.
@@ -78,20 +84,20 @@ public extension RelativeFormatter {
 	/// Return the default style for relative formatter.
 	///
 	/// - Returns: style instance.
-	public static func defaultStyle() -> Style {
+	static func defaultStyle() -> Style {
 		return Style(flavours: [.longConvenient, .long], gradation: .convenient())
 	}
 
 	/// Return the time-only style for relative formatter.
 	///
 	/// - Returns: style instance.
-	public static func timeStyle() -> Style {
+	static func timeStyle() -> Style {
 		return Style(flavours: [.longTime], gradation: .convenient())
 	}
 	/// Return the twitter style for relative formatter.
 	///
 	/// - Returns: style instance.
-	public static func twitterStyle() -> Style {
+	static func twitterStyle() -> Style {
 		return Style(flavours: [.tiny, .shortTime, .narrow, .shortTime], gradation: .twitter())
 	}
 
@@ -102,7 +108,7 @@ public extension RelativeFormatter {
 public extension RelativeFormatter {
 
 	/// Supported flavours
-	public enum Flavour: String {
+	enum Flavour: String {
 		case long 				= "long"
 		case longTime 			= "long_time"
 		case longConvenient	 	= "long_convenient"
@@ -125,7 +131,7 @@ public extension RelativeFormatter {
 	/// representation for 300 seconds is in minutes, 5 minutes specifically).
 	/// Rules are executed in order by the parser and the best one (< elapsed interval)
 	/// is returned to be used by the formatter.
-	public struct Gradation {
+	struct Gradation {
 
 		/// A single Gradation rule specification
 		// swiftlint:disable nesting
@@ -142,7 +148,25 @@ public extension RelativeFormatter {
 					}
 				}
 
-			}
+            }
+
+            public enum RoundingStrategy {
+
+                case regularRound
+                case ceiling
+                case flooring
+                case custom((Double) -> Double)
+
+                func roundValue(_ value: Double) -> Double {
+
+                    switch self {
+                    case .regularRound:                 return round(value)
+                    case .ceiling:                      return ceil(value)
+                    case .flooring:                     return floor(value)
+                    case .custom(let roundingFunction): return roundingFunction(value)
+                    }
+                }
+            }
 
 			/// The time unit to which the rule refers.
 			/// It's used to evaluate the factor.
@@ -155,6 +179,9 @@ public extension RelativeFormatter {
 
 			/// Granuality threshold of the unit
 			public var granularity: Double?
+
+            /// The rounding strategy that should be used prior to generating the relative time
+            public var roundingStrategy: RoundingStrategy
 
 			/// Relation with a previous threshold
 			public var thresholdPrevious: [Unit: Double]?
@@ -173,11 +200,16 @@ public extension RelativeFormatter {
 			///   - granularity: granularity value.
 			///   - prev: relation with a previous rule in gradation lsit.
 			///   - formatter: custom formatter.
-			public init(_ unit: Unit, threshold: ThresholdType?,
-						granularity: Double? = nil, prev: [Unit: Double]? = nil, formatter: CustomFormatter? = nil ) {
+			public init(_ unit: Unit,
+                        threshold: ThresholdType?,
+						granularity: Double? = nil,
+                        roundingStrategy: RoundingStrategy = .regularRound,
+                        prev: [Unit: Double]? = nil,
+                        formatter: CustomFormatter? = nil ) {
 				self.unit = unit
 				self.threshold = threshold
 				self.granularity = granularity
+                self.roundingStrategy = roundingStrategy
 				self.thresholdPrevious = prev
 				self.customFormatter = formatter
 			}
@@ -281,7 +313,7 @@ public extension RelativeFormatter {
 public extension RelativeFormatter {
 
 	/// Units for relative formatter
-	public enum Unit: String {
+	enum Unit: String {
 		case now 		= "now"
 		case second 	= "second"
 		case minute 	= "minute"

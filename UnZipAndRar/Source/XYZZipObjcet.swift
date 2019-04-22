@@ -13,12 +13,12 @@ import SHPathManager
 import UnrarKit
 import SHTManager
 
-public var XYZZIP = universalZipRarObject()
+public var XYZZIP = XYZZipObjcet()
 
-public class universalZipRarObject: NSObject {
+public class XYZZipObjcet: NSObject {
  
     var 解压次数 = 0 //用于修改弹出密码框的主题 是否显示重新输入
-    public static var shared = universalZipRarObject()
+    public static var shared = XYZZipObjcet()
     public func UnzipOrRAR(filePathX:Path,VC:UIViewController,progressX: @escaping ((_ progress: Double) -> ()))  -> Path {
         
         var 返回路径 = Path()
@@ -75,7 +75,8 @@ public class universalZipRarObject: NSObject {
         }
         
         do {
-            try archive?.extractFiles(to: To.url.path, overwrite: true, progress: { (Info, Progress) in
+            
+            try archive?.extractFiles(to: To.url.path, overwrite: false, progress: { (Info, Progress) in
                 print(Info)
                 print(Progress)
                 
@@ -232,6 +233,19 @@ public class universalZipRarObject: NSObject {
     }
 }
 
+
+public extension Path{
+    
+    static func PathsToURLs(From:[Path]) -> [URL]{
+        var BackURL = [URL]()
+        
+        for i in From{
+            BackURL.append(i.url)
+        }
+        return BackURL
+    }
+    
+}
 
 public func PathArray转URLArray(转:[Path]) -> [URL]? {
     var 返回数组 :[URL]? = nil

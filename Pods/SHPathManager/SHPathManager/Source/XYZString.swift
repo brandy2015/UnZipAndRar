@@ -13,7 +13,7 @@ class XYZString: NSObject {
 }
 
 public extension String{
-    public static func 去文件后缀(x s:String) -> String {
+      static func 去文件后缀(x s:String) -> String {
         var 空 = ""
         for i in s { if i != "."{ 空.append(i)}else{ break}}
         return 空
@@ -21,10 +21,10 @@ public extension String{
 }
 
 public extension String{
-    public var withoutExtension: String{
+      var withoutExtension: String{
         return String.去文件后缀x(x: self)
     }
-    public static func 去文件后缀x(x s:String) -> String {
+      static func 去文件后缀x(x s:String) -> String {
         var 空 = ""
         for i in s { if i != "."{ 空.append(i)}else{ break}}
         return 空
@@ -35,7 +35,7 @@ public extension String{
 
 public extension String{
     
-    public func transformToPinYin(取代空格的东西:String = "") -> String{//(String,String){
+      func transformToPinYin(取代空格的东西:String = "") -> String{//(String,String){
         
         let mutableString = NSMutableString(string: self)
         

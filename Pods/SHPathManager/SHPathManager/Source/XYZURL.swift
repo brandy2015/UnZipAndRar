@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FileKit
 class XYZURL: NSObject {
 
 }
@@ -19,4 +19,14 @@ public func fileToURL(_ file: String) -> URL? {
         return URL(fileURLWithPath: filePath)
     }
     return nil
+}
+
+//转换方法
+
+extension String{var ToURL :URL{return URL(fileURLWithPath: self)}}
+
+public func PathsToURLs(Paths:[Path]) -> [URL] {
+    var BackURLs = [URL]()
+    for i in Paths{ BackURLs.append(i.url)}
+    return BackURLs
 }
