@@ -1,9 +1,13 @@
 //
-//  DateInRegion+Operations.swift
 //  SwiftDate
+//  Parse, validate, manipulate, and display dates, time and timezones in Swift
 //
-//  Created by Daniele Margutti on 06/06/2018.
-//  Copyright © 2018 SwiftDate. All rights reserved.
+//  Created by Daniele Margutti
+//   - Web: https://www.danielemargutti.com
+//   - Twitter: https://twitter.com/danielemargutti
+//   - Mail: hello@danielemargutti.com
+//
+//  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
 import Foundation
@@ -94,10 +98,10 @@ public extension DateInRegion {
 		return list.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
 	}
 
-	/// Return the oldest date in given list (timezone is ignored, comparison uses absolute date).
+	/// Return the newest date in given list (timezone is ignored, comparison uses absolute date).
 	///
 	/// - Parameter list: list of dates
-	/// - Returns: a tuple with the index of the oldest date and its instance.
+	/// - Returns: a tuple with the index of the newest date and its instance.
 	static func newestIn(list: [DateInRegion]) -> DateInRegion? {
 		guard list.count > 0 else { return nil }
 		guard list.count > 1 else { return list.first! }
@@ -526,4 +530,121 @@ public extension DateInRegion {
 		return dateOccurrences
 	}
 
+}
+
+public extension DateInRegion {
+
+    /// Returns the date at the given week number and week day preserving smaller components (hour, minute, seconds)
+    ///
+    /// For example: to get the third friday of next month
+    ///         let today = DateInRegion()
+    ///         let result = today.dateAt(weekdayOrdinal: 3, weekday: .friday, monthNumber: today.month + 1)
+    ///
+    /// - Parameters:
+    ///     - weekdayOrdinal: the week number (by set position in a recurrence rule)
+    ///     - weekday: WeekDay
+    ///     - monthNumber: a number from 1 to 12 representing the month, optional parameter
+    ///     - yearNumber: a number representing the year, optional parameter
+    /// - Returns: new date created with the given parameters
+    func dateAt(weekdayOrdinal: Int, weekday: WeekDay, monthNumber: Int? = nil,
+                yearNumber: Int? = nil) -> DateInRegion {
+        let monthNum = monthNumber ?? month
+        let yearNum = yearNumber ?? year
+
+        var requiredWeekNum = weekdayOrdinal
+        var result = DateInRegion(year: yearNum, month: monthNum, day: 1, hour: hour,
+                                  minute: minute, second: second, nanosecond: nanosecond, region: region)
+
+        if result.weekday == weekday.rawValue {
+            requiredWeekNum -= 1
+        }
+
+        while requiredWeekNum > 0 {
+            result = result.nextWeekday(weekday)
+            requiredWeekNum -= 1
+        }
+
+        return result
+    }
+
+    /// Returns the date on the given day of month preserving smaller components
+    func dateAt(dayOfMonth: Int, monthNumber: Int? = nil,
+                yearNumber: Int? = nil) -> DateInRegion {
+        let monthNum = monthNumber ?? month
+        let yearNum = yearNumber ?? year
+
+        let result = DateInRegion(year: yearNum, month: monthNum, day: dayOfMonth,
+                                  hour: hour, minute: minute, second: second,
+                                  nanosecond: nanosecond, region: region)
+
+        return result
+    }
+
+    /// Returns the date after given number of weeks on the given day of week
+    func dateAfter(weeks count: Int, on weekday: WeekDay) -> DateInRegion {
+        var result = self.dateByAdding(count, .weekOfMonth)
+        if result.weekday == weekday.rawValue {
+            return result
+        } else if result.weekday > weekday.rawValue {
+            result = result.dateByAdding(-1, .weekOfMonth)
+        }
+        return result.nextWeekday(weekday)
+    }
+
+    /// Returns the next weekday preserving smaller components
+    ///
+    /// - Parameters:
+    ///   - weekday: weekday to get.
+    ///   - region: region target, omit to use `SwiftDate.defaultRegion`
+    /// - Returns: `DateInRegion`
+    func nextWeekday(_ weekday: WeekDay) -> DateInRegion {
+        var components = DateComponents()
+        components.weekday = weekday.rawValue
+        components.hour = hour
+        components.second = second
+        components.minute = minute
+
+        guard let next = region.calendar.nextDate(after: date, matching: components,
+                                                  matchingPolicy: .nextTimePreservingSmallerComponents) else {
+                                                    return self
+        }
+
+        return DateInRegion(next, region: region)
+    }
+
+    /// Returns next date with the given weekday and the given week number
+    func next(_ weekday: WeekDay, withWeekOfMonth weekNumber: Int,
+              andMonthNumber monthNumber: Int? = nil) -> DateInRegion {
+        var result = self.dateAt(weekdayOrdinal: weekNumber, weekday: weekday, monthNumber: monthNumber)
+
+        if result <= self {
+
+            if let monthNum = monthNumber {
+                result = self.dateAt(weekdayOrdinal: weekNumber, weekday: weekday,
+                                     monthNumber: monthNum, yearNumber: self.year + 1)
+            } else {
+                result = self.dateAt(weekdayOrdinal: weekNumber, weekday: weekday, monthNumber: self.month + 1)
+            }
+
+        }
+
+        return result
+    }
+
+    /// Returns the next day of month preserving smaller components (hour, minute, seconds)
+    func next(dayOfMonth: Int, monthOfYear: Int? = nil) -> DateInRegion {
+        var components = DateComponents()
+        components.day = dayOfMonth
+        components.month = monthOfYear
+        components.hour = hour
+        components.second = second
+        components.minute = minute
+
+        guard let next = region.calendar.nextDate(after: date, matching: components,
+                                                  matchingPolicy: .nextTimePreservingSmallerComponents) else {
+                                                    return self
+        }
+
+        return DateInRegion(next, region: region)
+    }
 }

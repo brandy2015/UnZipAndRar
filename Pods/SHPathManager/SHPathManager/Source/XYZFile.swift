@@ -71,129 +71,41 @@ open class XYZFile: NSObject {
     
 }
 
-
-
-
-
-
 public extension Path{
     
-      var fileNameCutEx: String {
+    var fileNameCutEx: String {
         if fileName.contains("." + pathExtension){
             let x = fileName.replacingOccurrences(of:pathExtension, with: "")
             return x.replacingOccurrences(of:".", with: "")
-        }else{
-            print("没有后缀")
-            return ""
-        }
+        }else{print("没有后缀");return ""}
     }
-    
 }
 
-
-
-public enum FileType:String {
-    case Music
-    case Video
-    case PDF
-    case Compression
-    case LMR
-    case Photo
-    case unknowntype
-    case Directory //文件路径
-}
-
+public enum FileType:String {case Music,Video,PDF,Compression,LMR,Photo,unknowntype,Directory}//文件路径
 
 public func GetFileType(GivePath:Path) -> FileType {
-    print("看type")
-    if GivePath.pathExtension == ""{
-        
-        if GivePath.isDirectory{
-            return FileType.Directory
-        }else{
-            return FileType.unknowntype
-        }
-        
-        
+    guard GivePath.pathExtension != "" else {return GivePath.isDirectory ? .Directory : .unknowntype}
+    switch GivePath.pathExtension.uppercased() {
+        case "MP3","FLAC","M4A","WAV","M4R": return .Music
+        case "MOV","MP4","AVI","WMV","MPG","M4V","RMVB","MKV","FLV","3GP": return .Video
+        case "PDF": return .PDF
+        case "LMR": return .LMR
+        case "Zip","RAR": return .Compression
+        case "PNG","JPG","JPEG","GIF","BMP": return .Photo
+        default:return .unknowntype
     }
-    
-    if (
-        GivePath.pathExtension.uppercased() == "MP3"   ||
-            GivePath.pathExtension.uppercased() == "FLAC"  ||
-            GivePath.pathExtension.uppercased() == "M4A"   ||
-            GivePath.pathExtension.uppercased() == "WAV"   ||
-            GivePath.pathExtension.uppercased() == "M4R"    ){
-        
-        return FileType.Music
-        
-    }
-    
-    if (GivePath.pathExtension.uppercased() == "MOV"  ||
-        GivePath.pathExtension.uppercased() == "MP4"  ||
-        GivePath.pathExtension.uppercased() == "AVI"  ||
-        GivePath.pathExtension.uppercased() == "WMV"  ||
-        GivePath.pathExtension.uppercased() == "MPG"  ||
-        GivePath.pathExtension.uppercased() == "M4V"  ||
-        GivePath.pathExtension.uppercased() == "MPG"  ||
-        GivePath.pathExtension.uppercased() == "RMVB" ||
-        GivePath.pathExtension.uppercased() == "MKV"  ||
-        GivePath.pathExtension.uppercased() == "FLV"  ||
-        GivePath.pathExtension.uppercased() == "3GP"  ){
-        
-        return FileType.Video
-    }
-    
-    if (GivePath.pathExtension.uppercased() == "PDF"  ){
-        return FileType.PDF
-    }
-    
-    if (GivePath.pathExtension.uppercased() == "LMR"  ){
-        return FileType.LMR
-    }
-    if (GivePath.pathExtension.uppercased() == "Zip"  ||
-        GivePath.pathExtension.uppercased() == "RAR"  ){
-        return FileType.Compression
-    }
-    
-    if (GivePath.pathExtension.uppercased() == "PNG"  ||
-        GivePath.pathExtension.uppercased() == "JPG"  ||
-        GivePath.pathExtension.uppercased() == "JPEG" ||
-        GivePath.pathExtension.uppercased() == "GIF"  ||
-        GivePath.pathExtension.uppercased() == "BMP"  ){
-        return FileType.Photo
-    }
-    
-    return FileType.unknowntype
 }
-//class RecipeIngredient: Food {
-//    public var quantity: Int
-//    init(name: String, quantity: Int) {
-//        self.quantity = quantity
-//        super.init(name: name)
-//    }
-//    override convenience init(name: String) {
-//        self.init(name: name, quantity: 1)
-//    }
-//}
-
 
 //锁屏后无法调用文件此方法处理文件可以访问
 //处理文件Protection权限为None以便后台调用Music
-public func 处理文件Protection权限为None以便后台调用Music(路径:[Path]) {
-    for i in 路径{
-        i.url.RemoveProtection()
-        print("处理掉权限访问")
-    }
-}
+public func 处理文件Protection权限为None以便后台调用Music(路径:[Path]) { for i in 路径{i.url.RemoveProtection()}}
 
 public extension URL{
-    
     func RemoveProtection() {
         let attributes:NSDictionary = NSDictionary(dictionary: [FileAttributeKey.protectionKey:FileProtectionType.none])
         do {try FileManager.default.setAttributes(attributes as! [FileAttributeKey : Any], ofItemAtPath: self.path)
         }catch{print("错误")}
     }
-    
 }
 
 public func FileInMainBundle(Name:String,Type:String) -> String? {

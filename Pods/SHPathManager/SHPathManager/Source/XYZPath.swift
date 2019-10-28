@@ -72,7 +72,9 @@ public func MoveToMusic(searchDepth:Int = 1)  {
                 path.pathExtension.uppercased() == "FLAC" ||
                 path.pathExtension.uppercased() == "M4A"  ||
                 path.pathExtension.uppercased() == "WAV"  ||
-                path.pathExtension.uppercased() == "M4R"
+                path.pathExtension.uppercased() == "M4R"  ||
+                path.pathExtension.uppercased() == "OGG"  ||
+                path.pathExtension.uppercased() == "RAM"
         )
     }
     
@@ -92,17 +94,26 @@ public func MoveToVideo(searchDepth:Int = 1)  {
     if !userVideo.exists{try?  userVideo.createDirectory()}
     let textFiles = Path.userDocuments.find(searchDepth: searchDepth) { path in
         (
-                path.pathExtension.uppercased() == "MOV"  ||
-                path.pathExtension.uppercased() == "MP4"  ||
-                path.pathExtension.uppercased() == "AVI"  ||
-                path.pathExtension.uppercased() == "WMV"  ||
-                path.pathExtension.uppercased() == "MPG"  ||
-                path.pathExtension.uppercased() == "M4V"  ||
-                path.pathExtension.uppercased() == "MPG"  ||
-                path.pathExtension.uppercased() == "RMVB" ||
-                path.pathExtension.uppercased() == "MKV"  ||
-                path.pathExtension.uppercased() == "FLV"  ||
-                path.pathExtension.uppercased() == "3GP"
+                path.pathExtension.uppercased() == "MOV"    ||
+                path.pathExtension.uppercased() == "MP4"    ||
+                path.pathExtension.uppercased() == "AVI"    ||
+                path.pathExtension.uppercased() == "WMV"    ||
+                path.pathExtension.uppercased() == "MPG"    ||
+                path.pathExtension.uppercased() == "M4V"    ||
+                path.pathExtension.uppercased() == "MPG"    ||
+                path.pathExtension.uppercased() == "RMVB"   ||
+                path.pathExtension.uppercased() == "MKV"    ||
+                path.pathExtension.uppercased() == "FLV"    ||
+                path.pathExtension.uppercased() == "3GP"    ||
+                path.pathExtension.uppercased() ==  "MPG"   ||
+                path.pathExtension.uppercased() ==  "RMVB"  ||
+                path.pathExtension.uppercased() ==  "MKV"   ||
+                path.pathExtension.uppercased() ==  "FLV"   ||
+                path.pathExtension.uppercased() ==  "WMA"   ||
+                path.pathExtension.uppercased() ==  "VOB"   ||
+                path.pathExtension.uppercased() ==  "DIVX"
+            
+            
         )
     }
     for i in textFiles{
@@ -198,7 +209,9 @@ public func GetPathsInMusic(searchDepth:Int = 1) -> [Path] {
                 path.pathExtension.uppercased() == "FLAC" ||
                 path.pathExtension.uppercased() == "M4A"  ||
                 path.pathExtension.uppercased() == "WAV"  ||
-                path.pathExtension.uppercased() == "M4R"
+                path.pathExtension.uppercased() == "M4R"  ||
+                path.pathExtension.uppercased() == "OGG"  ||
+                path.pathExtension.uppercased() == "RAM"
         )
     }
     textFiles.sort { (s1, s2) -> Bool in
@@ -212,17 +225,25 @@ public func GetPathsInVideo(searchDepth:Int = 1) -> [Path] {
     if !userVideo.exists{try?  userVideo.createDirectory()}
     var textFiles = userVideo.find(searchDepth: searchDepth) { path in
         (
-                path.pathExtension.uppercased() == "MOV"  ||
-                path.pathExtension.uppercased() == "MP4"  ||
-                path.pathExtension.uppercased() == "AVI"  ||
-                path.pathExtension.uppercased() == "WMV"  ||
-                path.pathExtension.uppercased() == "MPG"  ||
-                path.pathExtension.uppercased() == "M4V"  ||
-                path.pathExtension.uppercased() == "MPG"  ||
-                path.pathExtension.uppercased() == "RMVB" ||
-                path.pathExtension.uppercased() == "MKV"  ||
-                path.pathExtension.uppercased() == "FLV"  ||
-                path.pathExtension.uppercased() == "3GP"
+                path.pathExtension.uppercased() == "MOV"    ||
+                path.pathExtension.uppercased() == "MP4"    ||
+                path.pathExtension.uppercased() == "AVI"    ||
+                path.pathExtension.uppercased() == "WMV"    ||
+                path.pathExtension.uppercased() == "MPG"    ||
+                path.pathExtension.uppercased() == "M4V"    ||
+                path.pathExtension.uppercased() == "MPG"    ||
+                path.pathExtension.uppercased() == "RMVB"   ||
+                path.pathExtension.uppercased() == "MKV"    ||
+                path.pathExtension.uppercased() == "FLV"    ||
+                path.pathExtension.uppercased() == "3GP"    ||
+                path.pathExtension.uppercased() ==  "MPG"   ||
+                path.pathExtension.uppercased() ==  "RMVB"  ||
+                path.pathExtension.uppercased() ==  "MKV"   ||
+                path.pathExtension.uppercased() ==  "FLV"   ||
+                path.pathExtension.uppercased() ==  "WMA"   ||
+                path.pathExtension.uppercased() ==  "VOB"   ||
+                path.pathExtension.uppercased() ==  "DIVX"
+
         )
     }
     for i in textFiles{

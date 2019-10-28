@@ -29,78 +29,43 @@ open class XYZMusic: XYZFile {
     
     public init(Pathx: Path,MusicImage:UIImage? = nil) {
         super.init(Pathx: Pathx)
-        
-        guard Pathx.exists else{
-            print("exists没执行")
-            return
-            
-        }
-        
-        
-        if let MusicImage = MusicImage{
-            self.MusicImageX = MusicImage
-        }
+        guard Pathx.exists else{return}
+        self.MusicImageX = MusicImage
         self.mp3Asset = AVURLAsset(url: Pathx.url)
         
+        guard let formats = mp3Asset?.availableMetadataFormats else {return}
         
-        guard let formats = mp3Asset?.availableMetadataFormats else {
-            print("formats没执行")
-            return
-        }
         var MetaX: [String? : Any?] = [:]
-        for format in formats{
-            
-            guard let metaData = mp3Asset?.metadata(forFormat: format) else{
-                print("metaData没执行")
-                return
-            }
-            MetaX = AVMetadataItem.ToInfoDic(metaData: metaData)
+        for format in formats {
+            guard let metaData = mp3Asset?.metadata(forFormat: format) ,let metacc = AVMetadataItem.ToInfoDic(metaData: metaData) else{print("metaData没执行");return}
+            MetaX =  metacc
         }
         self.songName  = MetaX["title"]     as? String//歌曲名
         self.artist    = MetaX["artist"]    as? String//作曲家名
         self.albumName = MetaX["albumName"] as? String//专辑名
-        
-        
         let artworkData  = MetaX["artwork"]   as? Data
-        if let artworkData = artworkData ,let ImageXX = UIImage(data: artworkData){
-            self.MusicImageX = ImageXX                //artwork专辑照片
-        }
-        
+        if let artworkData = artworkData ,let ImageXX = UIImage(data: artworkData){ self.MusicImageX = ImageXX   }             //artwork专辑照片
+           
+      
         //为Flac准备
-        if self.songName == nil{
-            self.songName = self.NameCutEx
-        }
-        if self.artist == nil {
-            self.artist = "未知"
-        }
-        if self.albumName == nil {
-            self.albumName = "未知"
-        }
+        if self.songName == nil{self.songName = self.NameCutEx}
+        if self.artist == nil {self.artist = "未知"}
+        if self.albumName == nil {self.albumName = "未知"}
         self.albumArt = MPMediaItemArtwork(boundsSize: mySize) { (size) -> UIImage in
             return self.MusicImageX ?? UIImage()
         }
-       
-//        self.albumArt = MPMediaItemArtwork(image: self.MusicImageX ?? UIImage())
     }
-    
-    
 }
 
 public extension AVMetadataItem{
-      static func ToInfoDic(metaData:[AVMetadataItem]) -> [String?:Any?]{
+      static func ToInfoDic(metaData:[AVMetadataItem]) -> [String?:Any?]?{
         var MP3Data : [String?:Any?] = [:]
         for metadataItem in metaData{
             if let key = metadataItem.commonKey?.rawValue ,let value = metadataItem.value{
                 MP3Data[key] = value
             }
-            if metadataItem.commonKey?.rawValue == "artwork"{
-                print("获取了图片")
-                if let artworkData = metadataItem.value as? Data{
-                    MP3Data["artwork"] = artworkData
-                }
-            }else{
-                print("没有图片！！")
-            }
+            guard metadataItem.commonKey?.rawValue == "artwork" else{print("没有图片！！");return nil}
+            if let artworkData = metadataItem.value as? Data{MP3Data["artwork"] = artworkData}
         }
         
         

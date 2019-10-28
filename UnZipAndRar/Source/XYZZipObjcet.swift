@@ -56,11 +56,11 @@ public class XYZZipObjcet: NSObject {
     
     //如果是zip 那么返回true,如果是RAR，返回false
     public func isZiporRAR(From:Path) -> Bool? {
-        if From.pathExtension.uppercased() == "ZIP"{
-            return true
-        }else if From.pathExtension.uppercased() == "RAR"{
-            return false
-        }else {return nil}
+        switch From.pathExtension.uppercased() {
+            case "ZIP":return true
+            case "RAR":return false
+            default   :return nil
+        }
     }
     
     
@@ -76,15 +76,16 @@ public class XYZZipObjcet: NSObject {
         
         do {
             
-            try archive?.extractFiles(to: To.url.path, overwrite: false, progress: { (Info, Progress) in
-                print(Info)
-                print(Progress)
-                
-                if let progressX = progressX{
-                    progressX(Double(Progress))
-                }
-                
-            })
+            try archive?.extractFiles(to: To.url.path, overwrite: false)
+//            extractFiles(to: To.url.path, overwrite: false, progress: { (Info, Progress) in
+//                print(Info)
+//                print(Progress)
+//                
+//                if let progressX = progressX{
+//                    progressX(Double(Progress))
+//                }
+//                
+//            })
             
             
             
@@ -224,35 +225,13 @@ public class XYZZipObjcet: NSObject {
     
     //    //压缩成的文件加密码时候有问题！！！！解压缩会失败
     public func ZipFile(From:[URL],To finalURL:URL,progressX: @escaping ((_ progress: Double) -> ())) {
-        do{
-            try Zip.zipFiles(paths: From, zipFilePath: finalURL, password: nil, progress: { (progress) -> () in
-                print(progress)
-                progressX(progress)
-            }) //Zip
+        do{try Zip.zipFiles(paths: From, zipFilePath: finalURL, password: nil, progress: { (progress) -> () in
+            print(progress);progressX(progress)}) //Zip
         }catch{print(error)}
     }
 }
 
-
-public extension Path{
-    
-    static func PathsToURLs(From:[Path]) -> [URL]{
-        var BackURL = [URL]()
-        
-        for i in From{
-            BackURL.append(i.url)
-        }
-        return BackURL
-    }
-    
-}
-
-public func PathArray转URLArray(转:[Path]) -> [URL]? {
-    var 返回数组 :[URL]? = nil
-    
-    for i in 转{
-        返回数组?.append(i.url)
-    }
-    
-    return 返回数组
+//扩展[Path] 数组的方法转换  [Path]->[URL]转换
+extension Array where Element == Path{
+    func ToURLArray() -> [URL] {return self.compactMap { (x) -> URL? in return x.url}}
 }
