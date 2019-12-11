@@ -4,17 +4,17 @@
 
 
 
-# UnZipAndRar
+# XYZZipKit
 Easy way in Swift
 
 
 
 
 ## Requirements
-* Xcode 10.1 or higher
-* iOS 10.1 or higher (may work on previous versions, just did not test it)
+* Xcode 11.3 or higher
+* iOS 13.0 or higher (may work on previous versions, just did not test it)
 * ARC
-* Swift 4.2
+* Swift 5.1
 
 ## Demo
 
@@ -25,12 +25,12 @@ Easy way in Swift
 ### CocoaPods
 
 ``` ruby
-pod 'UnZipAndRar'
+pod 'XYZZipKit'
 ```
 
 ### Manual
 
-Add  UnZipAndRar  folder into your project.
+Add  XYZZipKit  folder into your project.
 
 ## Example usage
-Import UnZipAndRar
+Import XYZZipKit

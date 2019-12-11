@@ -5,10 +5,10 @@ SHTManager
 
 
 ## Requirements
-* Xcode 10.1 or higher
-* iOS 10.1 or higher (may work on previous versions, just did not test it)
+* Xcode 13.0 or higher
+* iOS 11.3 or higher (may work on previous versions, just did not test it)
 * ARC
-* Swift 4.2
+* Swift 5.0 or higher
 
 ## Demo
 

@@ -10,7 +10,6 @@ import UIKit
 import FileKit
 import MediaPlayer
 import AVFoundation
-import SHTManager
 
 open class XYZMusic: XYZFile {
     public var mp3Asset : AVURLAsset? = nil
@@ -19,22 +18,22 @@ open class XYZMusic: XYZFile {
     public var songName  :String?           = nil           //歌曲名
     public var MusicImageX:UIImage?         = nil           //图片
     public var albumName :String?           = nil           //专辑名
-    
+
     //专辑封面
     let mySize = CGSize(width: 400, height: 400)
     public var albumArt : MPMediaItemArtwork? = nil
-    
-    
+
+
     public var 播放长度      :Double = 0.0
-    
+
     public init(Pathx: Path,MusicImage:UIImage? = nil) {
         super.init(Pathx: Pathx)
         guard Pathx.exists else{return}
         self.MusicImageX = MusicImage
         self.mp3Asset = AVURLAsset(url: Pathx.url)
-        
+
         guard let formats = mp3Asset?.availableMetadataFormats else {return}
-        
+
         var MetaX: [String? : Any?] = [:]
         for format in formats {
             guard let metaData = mp3Asset?.metadata(forFormat: format) ,let metacc = AVMetadataItem.ToInfoDic(metaData: metaData) else{print("metaData没执行");return}
@@ -45,8 +44,8 @@ open class XYZMusic: XYZFile {
         self.albumName = MetaX["albumName"] as? String//专辑名
         let artworkData  = MetaX["artwork"]   as? Data
         if let artworkData = artworkData ,let ImageXX = UIImage(data: artworkData){ self.MusicImageX = ImageXX   }             //artwork专辑照片
-           
-      
+
+
         //为Flac准备
         if self.songName == nil{self.songName = self.NameCutEx}
         if self.artist == nil {self.artist = "未知"}
@@ -58,39 +57,17 @@ open class XYZMusic: XYZFile {
 }
 
 public extension AVMetadataItem{
-      static func ToInfoDic(metaData:[AVMetadataItem]) -> [String?:Any?]?{
+    static func ToInfoDic(metaData:[AVMetadataItem]) -> [String?:Any?]?{
         var MP3Data : [String?:Any?] = [:]
         for metadataItem in metaData{
-            if let key = metadataItem.commonKey?.rawValue ,let value = metadataItem.value{
-                MP3Data[key] = value
+            if let key = metadataItem.commonKey?.rawValue ,let value = metadataItem.value{ MP3Data[key] = value}
+            if let commkeyX = metadataItem.commonKey?.rawValue,commkeyX == "artwork",let artworkData = metadataItem.value as? Data {
+                MP3Data["artwork"] = artworkData
             }
-            guard metadataItem.commonKey?.rawValue == "artwork" else{print("没有图片！！");return nil}
-            if let artworkData = metadataItem.value as? Data{MP3Data["artwork"] = artworkData}
-        }
-        
-        
+        } 
         return MP3Data
     }
 }
-
-
-
-//for item in metadataList {
-//
-//    guard let key = item.commonKey?.rawValue, let value = item.value else{
-//        continue
-//    }
-//
-//    switch key {
-//    case "title" : trackLabel.text = value as? String
-//    case "artist": artistLabel.text = value as? String
-//    case "artwork" where value is Data : artistImage.image = UIImage(data: value as! Data)
-//    default:
-//        continue
-//    }
-//}
-
-
 
 
 
@@ -195,23 +172,23 @@ public extension AVMetadataItem{
 //func audioFileInfo(url: URL) -> NSDictionary? {
 //    var fileID: AudioFileID? = nil
 //    var status:OSStatus = AudioFileOpenURL(url as CFURL, .readPermission, kAudioFileFLACType, &fileID)
-//    
+//
 //    guard status == noErr else { return nil }
-//    
+//
 //    var dict: CFDictionary? = nil
 //    var dataSize = UInt32(MemoryLayout<CFDictionary?>.size(ofValue: dict))
-//    
+//
 //    guard let audioFile = fileID else { return nil }
-//    
+//
 //    status = AudioFileGetProperty(audioFile, kAudioFilePropertyInfoDictionary, &dataSize, &dict)
-//    
+//
 //    guard status == noErr else { return nil }
-//    
+//
 //    AudioFileClose(audioFile)
-//    
+//
 //    guard let cfDict = dict else { return nil }
-//    
+//
 //    let tagsDict = NSDictionary.init(dictionary: cfDict)
-//    
+//
 //    return tagsDict
 //}

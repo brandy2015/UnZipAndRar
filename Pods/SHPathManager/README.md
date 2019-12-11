@@ -6,8 +6,8 @@ Easy way in Swift Path Managing
 
 
 ## Requirements
-* Xcode 10.1 or higher
-* iOS 10.1 or higher (may work on previous versions, just did not test it)
+* Xcode 11.2.1 or higher
+* iOS 11.2.1 or higher (may work on previous versions, just did not test it)
 * ARC
 * Swift 5.0
 

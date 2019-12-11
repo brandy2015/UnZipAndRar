@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "UnZipAndRar"
-  s.version      = "1.0.1"
+  s.version      = "1.1.1"
   s.summary      = "解压缩的库xxxxxxxxxxxxxxxxx"
   s.description  = <<-DESC
                     解压缩支持.zip .rar格式xxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -27,14 +27,14 @@ Pod::Spec.new do |s|
   s.dependency 'SHPathManager'
 
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "Brandy" => "" }
 
 
   s.authors            = { "Brandy" => "zhangqianbrandy2012@gmail.com" }
-  s.platform     = :ios, "12.0"
-  s.source       = { :git => "https://github.com/brandy2015/UnZipAndRar.git", :tag => "1.0.1"}
+  s.platform     = :ios, "13.0"
+  s.source       = { :git => "https://github.com/brandy2015/UnZipAndRar.git", :tag => "1.1.1"}
   s.source_files = "UnZipAndRar/Source/*"
 
 

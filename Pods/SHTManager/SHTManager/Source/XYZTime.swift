@@ -9,20 +9,11 @@
 import UIKit
 import SwiftDate
 
-public extension String{
-    static let YearMonthDayString = "yyyyMMdd"
-    static let YearMonthString = "yyyyMM"
-    static let YearString = "yyyy"
-
-    static let YearMonthDayString_ = "yyyy-MM-dd"
-    static let YearMonthString_ = "yyyy-MM"
-
-}
-
 
 public class XYZTime: NSObject {
     
     public static var SoHowTimeZone = 8.hours
+    
     public static var Now: Date {
         return Date() + SoHowTimeZone
     }
@@ -302,7 +293,7 @@ public extension Date{
 
 
 extension String{
-    func String2date(dateFormat:String = "yyyy-MM-dd HH:mm:ss") -> Date? {
+    func XYZdate(dateFormat:String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         let formatter = DateFormatter()
         formatter.locale = .current
         //            Locale.init(identifier: "zh_CN")
