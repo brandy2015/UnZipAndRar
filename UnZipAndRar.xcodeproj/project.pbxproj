@@ -17,7 +17,8 @@
 		D62AFC2821772A8C0013974F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2521772A8C0013974F /* README.md */; };
 		D62AFC2921772A8C0013974F /* UnZipAndRar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */; };
 		D62AFC2D21772FA30013974F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D62AFC2C21772FA30013974F /* Podfile */; };
-		D63F7B4A21776232004A9DA3 /* XYZZipObjcet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */; };
+		D63F7B4A21776232004A9DA3 /* XYZUnzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F7B4921776232004A9DA3 /* XYZUnzip.swift */; };
+		D6947CED23A7AB8700EBDF12 /* XYZZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6947CEC23A7AB8700EBDF12 /* XYZZip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,8 @@
 		D62AFC2521772A8C0013974F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D62AFC2621772A8C0013974F /* UnZipAndRar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnZipAndRar.podspec; sourceTree = "<group>"; };
 		D62AFC2C21772FA30013974F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZZipObjcet.swift; sourceTree = "<group>"; };
+		D63F7B4921776232004A9DA3 /* XYZUnzip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZUnzip.swift; sourceTree = "<group>"; };
+		D6947CEC23A7AB8700EBDF12 /* XYZZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYZZip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,8 @@
 		D6863E0721BB4D3A00B9D518 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D63F7B4921776232004A9DA3 /* XYZZipObjcet.swift */,
+				D63F7B4921776232004A9DA3 /* XYZUnzip.swift */,
+				D6947CEC23A7AB8700EBDF12 /* XYZZip.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -231,8 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D62AFC1521772A1A0013974F /* unzipVC.swift in Sources */,
+				D6947CED23A7AB8700EBDF12 /* XYZZip.swift in Sources */,
 				D62AFC1321772A1A0013974F /* AppDelegate.swift in Sources */,
-				D63F7B4A21776232004A9DA3 /* XYZZipObjcet.swift in Sources */,
+				D63F7B4A21776232004A9DA3 /* XYZUnzip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
