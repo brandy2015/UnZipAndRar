@@ -1,0 +1,6 @@
+framework module XYZPathKit {
+  umbrella header "XYZPathKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

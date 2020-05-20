@@ -1,6 +1,0 @@
-framework module SHTManager {
-  umbrella header "SHTManager-umbrella.h"
-
-  export *
-  module * { export * }
-}

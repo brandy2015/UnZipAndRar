@@ -161,19 +161,15 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SHPathManager/SHPathManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SHTManager/SHTManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UnrarKit/UnrarKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/XYZPathKit/XYZPathKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/XYZTimeKit/XYZTimeKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Zip/Zip.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SHPathManager/SHPathManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SHTManager/SHTManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UnrarKit/UnrarKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/XYZPathKit/XYZPathKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/XYZTimeKit/XYZTimeKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Zip/Zip.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

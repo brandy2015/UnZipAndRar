@@ -1,7 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-UnZipAndRar/Pods-UnZipAndRar-frameworks.sh
-${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework
-${BUILT_PRODUCTS_DIR}/SHPathManager/SHPathManager.framework
-${BUILT_PRODUCTS_DIR}/SHTManager/SHTManager.framework
-${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework
 ${BUILT_PRODUCTS_DIR}/UnrarKit/UnrarKit.framework
+${BUILT_PRODUCTS_DIR}/XYZPathKit/XYZPathKit.framework
+${BUILT_PRODUCTS_DIR}/XYZTimeKit/XYZTimeKit.framework
 ${BUILT_PRODUCTS_DIR}/Zip/Zip.framework

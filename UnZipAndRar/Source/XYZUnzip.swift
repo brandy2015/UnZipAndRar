@@ -8,10 +8,10 @@
 
 import UIKit
 import Zip
-import FileKit
-import SHPathManager
+//import FileKit
 import UnrarKit
-import SHTManager
+import XYZTimeKit
+import XYZPathKit
 
 public var XYZZIP = XYZZipObjcet()
 

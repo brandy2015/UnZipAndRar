@@ -1,0 +1,6 @@
+framework module XYZTimeKit {
+  umbrella header "XYZTimeKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
