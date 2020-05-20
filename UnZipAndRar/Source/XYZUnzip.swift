@@ -17,7 +17,7 @@ public var XYZZIP = XYZZipObjcet()
 
 public class XYZZipObjcet: NSObject {
  
-    var 解压次数 = 0 //用于修改弹出密码框的主题 是否显示重新输入
+    var 解压次数 = 0 //用于修改弹出密码框的主题 是否显示重新输入f
     public static var shared = XYZZipObjcet()
     public func UnzipOrRAR(filePathX:Path,VC:UIViewController,progressX: @escaping ((_ progress: Double) -> ()))  -> Path {
         
@@ -57,6 +57,7 @@ public class XYZZipObjcet: NSObject {
     //如果是zip 那么返回true,如果是RAR，返回false
     public func isZiporRAR(From:Path) -> Bool? {
         switch From.pathExtension.uppercased() {
+           
             case "ZIP":return true
             case "RAR":return false
             default   :return nil
@@ -86,7 +87,6 @@ public class XYZZipObjcet: NSObject {
 //                }
 //                
 //            })
-            
             
             
             解压次数 = 0 //置空
