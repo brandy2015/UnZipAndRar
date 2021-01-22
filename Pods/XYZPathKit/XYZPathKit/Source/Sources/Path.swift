@@ -1103,9 +1103,9 @@ extension Path: ExpressibleByStringInterpolation {
     // MARK: - StringInterpolationConvertible
 
     /// Initializes a path from the string interpolation paths.
-    public init(stringInterpolation paths: Path...) {
-        self.init(paths.reduce("", { $0 + $1.rawValue }))
-    }
+//    public init(stringInterpolation paths: Path...) {
+//        self.init(paths.reduce("", { $0 + $1.rawValue }))
+//    }
 
     /// Initializes a path from the string interpolation segment.
     public init<T>(stringInterpolationSegment expr: T) {

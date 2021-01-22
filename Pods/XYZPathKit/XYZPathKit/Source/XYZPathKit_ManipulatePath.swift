@@ -152,3 +152,21 @@ public func MoveToPic(searchDepth:Int = 1)  {
         }else{ /* print(i.fileName + "在Music中")*/}
     }
 }
+
+public func 检测Pic文件并移至Pic文件夹(searchDepth:Int = 1)  {
+    let textFiles = Path.userDocuments.find(searchDepth: searchDepth) { path in  path.isPic}
+    
+    for i in textFiles{
+        if i^ != userPic{
+            do {
+                try i ->> (userPic + i.fileName)
+            }catch{print("再次尝试移动")
+                do {
+                    let newFileName = UUID().uuidString + "." + i.pathExtension
+                    let newFilePath = userPic + newFileName
+                    try i ->> newFilePath
+                }catch{print("移动失败")}
+            }
+        }else{ /* print(i.fileName + "在Music中")*/}
+    }
+}

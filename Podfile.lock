@@ -2,10 +2,10 @@ PODS:
   - UnrarKit (2.9):
     - UnrarKit/unrar-lib (= 2.9)
   - UnrarKit/unrar-lib (2.9)
-  - XYZPathKit (2.0.10):
+  - XYZPathKit (3.0.1):
     - XYZTimeKit
-  - XYZTimeKit (2.0.5)
-  - Zip (1.1.0)
+  - XYZTimeKit (3.0.1)
+  - Zip (2.1.1)
 
 DEPENDENCIES:
   - UnrarKit
@@ -22,10 +22,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   UnrarKit: 99e3f0222a98a212188e1a6975dcf5aa798d26dd
-  XYZPathKit: 2757e50bb94c6d067ecf782d5dfa7d1264b54e16
-  XYZTimeKit: 20dd15aabbf318cc9a18da7409f63d58ccdf4f1a
-  Zip: 8877eede3dda76bcac281225c20e71c25270774c
+  XYZPathKit: 156c2652202f98e47f41a8767b62be8e614ea80c
+  XYZTimeKit: 83a8914a1ee29119ba8afc1615edae979594db1c
+  Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
 PODFILE CHECKSUM: 661f6bdb0cb1dd624eaaacbb9507a552c5d0db39
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

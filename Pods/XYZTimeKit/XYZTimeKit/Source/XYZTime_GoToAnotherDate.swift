@@ -104,5 +104,9 @@ public extension Date{
     var TestDate2:Date{
         return PreMonEnd
     }
+    
+    var TestDate3:Date{
+        return PreDayEnd
+    }
 }
  

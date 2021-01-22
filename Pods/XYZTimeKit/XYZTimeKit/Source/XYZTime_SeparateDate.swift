@@ -30,3 +30,77 @@ public extension Date{
 }
     
 
+
+
+//extension Date{
+//
+//    var YearInt : Int{
+//        return self.SeparateDate().Year
+//    }
+//    var MonthInt : Int{
+//        return self.SeparateDate().Month
+//    }
+//    var DayInt : Int{
+//        return self.SeparateDate().Day
+//    }
+//    var HourInt : Int{
+//        return self.SeparateDate().Hour
+//    }
+//    var MinInt : Int{
+//        return self.SeparateDate().Min
+//    }
+//    var SecInt : Int{
+//        return self.SeparateDate().Sec
+//    }
+//
+//
+//
+//    var YearString : String{
+//        return "\(self.SeparateDate().Year)"
+//    }
+//    var MonthString : String{
+//
+//        if self.SeparateDate().Month < 10 {
+//            return "0" + "\(self.SeparateDate().Month)"
+//        }else{
+//            return "\(self.SeparateDate().Month)"
+//        }
+//    }
+//    var DayString : String{
+//
+//        if self.SeparateDate().Day < 10 {
+//            return "0" + "\(self.SeparateDate().Day)"
+//        }else{
+//            return "\(self.SeparateDate().Day)"
+//        }
+//
+//    }
+//    var HourString : String{
+//        if self.SeparateDate().Hour < 10 {
+//            return "0" + "\(self.SeparateDate().Hour)"
+//        }else{
+//            return "\(self.SeparateDate().Hour)"
+//        }
+//
+//    }
+//    var MinString : String{
+//
+//        if self.SeparateDate().Min < 10 {
+//            return "0" + "\(self.SeparateDate().Min)"
+//        }else{
+//            return "\(self.SeparateDate().Min)"
+//        }
+//
+//    }
+//    var SecString : String{
+//        if self.SeparateDate().Sec < 10 {
+//            return "0" + "\(self.SeparateDate().Sec)"
+//        }else{
+//            return "\(self.SeparateDate().Sec)"
+//        }
+//    }
+//    var 日时分 : String{
+//        return "\(self.DayInt)日 \(self.HourInt):" + self.MinString
+//    }
+//
+//}

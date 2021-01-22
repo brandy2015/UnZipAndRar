@@ -22,8 +22,5 @@ public class XYZTimeKit:NSObject  {
     
     public var NowNoZoneString:String{
         return "\(Date())"
-    }
-    
-    
-    
+    } 
 }

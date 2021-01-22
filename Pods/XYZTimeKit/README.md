@@ -5,10 +5,10 @@ XYZTimeKit
 
 
 ## Requirements
-* Xcode 11.4 or higher
+* Xcode 12.0.1 or higher
 * iOS 13.0 or higher (may work on previous versions, just did not test it)
 * ARC
-* Swift 5.0 or higher
+* Swift 5.3 or higher
 
 ## Demo
 

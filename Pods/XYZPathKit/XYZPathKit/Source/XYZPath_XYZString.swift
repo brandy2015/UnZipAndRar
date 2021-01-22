@@ -14,7 +14,7 @@ import UIKit
 public extension String{
     
     func toPasteboard() {
-        print("已复制进剪贴9")
+        print("已复制进剪贴板")
         print(self)
         UIPasteboard.general.string = self
     }

@@ -6,15 +6,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 inhibit_all_warnings!
-target 'UnZipAndRar' do
-    #pod 'SwiftDate'
+target 'UnZipAndRar' do 
     pod 'Zip'
-    #pod 'FileKit'
     pod 'UnrarKit'
     #pod 'SSZipArchive'
-   # pod 'SHTManager'
-   # pod 'SHPathManager'#,'~> 0.2.0'
-    
     pod 'XYZPathKit'  # 自己的文件路径管理
     pod 'XYZTimeKit'      # 自己的时间管理
 end

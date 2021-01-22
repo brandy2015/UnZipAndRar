@@ -44,6 +44,22 @@ public extension Date{
     
     
 }
+
+
+public extension Date{
+    var sendTime发布时间转文字方法:String{
+        return sendTime发布时间转文字方法(发布时间: self)
+    }
+    
+    private func sendTime发布时间转文字方法(发布时间:Date) -> String {
+        let date = DateFormatter()
+        date.dateFormat = "Y.M.d H:mm"
+        let datetostring = date.string(from: 发布时间)
+        return datetostring
+    }
+    
+}
+
 //转String为Date
 //func ToXYZDate(format:String = "yyyyMMddHHmmss") -> Date {
 //    //处理给予的String时间的格式
